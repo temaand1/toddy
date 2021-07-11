@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="afa351aa-92ed-4241-baf7-2cf5423d0011" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1tttvl84mo4EWUAak4VEJJtgZIc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="afa351aa-92ed-4241-baf7-2cf5423d0011" name="Default Changelist" comment="" />
+      <created>1623600697170</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1623600697170</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1556" height="2" key="GridCell.Tab.0.bottom" timestamp="1624550806916">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="2" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1624550806916" />
+    <state width="1556" height="2" key="GridCell.Tab.0.center" timestamp="1624550806916">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="2" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1624550806916" />
+    <state width="1556" height="2" key="GridCell.Tab.0.left" timestamp="1624550806916">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="2" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1624550806916" />
+    <state width="1556" height="2" key="GridCell.Tab.0.right" timestamp="1624550806916">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1556" height="2" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1624550806916" />
+    <state x="302" y="73" key="SettingsEditor" timestamp="1624202661220">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="302" y="73" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1624202661220" />
+    <state x="495" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1624547887784">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="495" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1624547887784" />
+    <state x="494" y="28" width="613" height="804" key="find.popup" timestamp="1623613025422">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="494" y="28" width="613" height="804" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1623613025422" />
+  </component>
+</project>

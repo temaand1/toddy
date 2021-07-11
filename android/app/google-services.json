@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1022454168681",
+    "project_id": "toddy-1d800",
+    "storage_bucket": "toddy-1d800.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022454168681:android:dea108e547ad0d7a00f6f8",
+        "android_client_info": {
+          "package_name": "com.temaandone.toddyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022454168681-jmtsg6gvo6d0v9usm1c64iup2l287me7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZhu15v4yEeOY7pAmkopLAdiek7BZfUYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022454168681-jmtsg6gvo6d0v9usm1c64iup2l287me7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
