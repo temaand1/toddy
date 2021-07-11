@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -31,6 +32,8 @@ class _AddButtonState extends State<AddButton> {
   @override
   Widget build(BuildContext context) {
     String newTaskTitle = "";
+    String taskDay = DateFormat.yMd().format(DateTime.now());
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton(
@@ -75,6 +78,21 @@ class _AddButtonState extends State<AddButton> {
                               decoration: InputDecoration(),
                             ),
                             SizedBox(height: 20),
+                            Container(
+                              height: 100,
+                              child: CupertinoDatePicker(
+                                mode: CupertinoDatePickerMode.date,
+                                initialDateTime: DateTime.now(),
+                                onDateTimeChanged: (DateTime newDateTime) {
+                                  setState(() {
+                                    taskDay =
+                                        DateFormat.yMd().format(newDateTime);
+                                    print(taskDay);
+                                  });
+                                },
+                              ),
+                            ),
+                            SizedBox(height: 20),
                             Padding(
                               padding: EdgeInsets.only(bottom: 10),
                               child: ElevatedButton(
@@ -92,11 +110,11 @@ class _AddButtonState extends State<AddButton> {
                                       .set({
                                         'userEmail': loggedUser,
                                         'taskName': newTaskTitle,
-                                        'taskDate': DateFormat.yMd()
-                                            .format(DateTime.now()),
+                                        'taskDate': taskDay,
                                         'isDone': taskInit
                                       })
-                                      .then((value) => print('Task Add'))
+                                      .then((value) =>
+                                          print('Task Add on $taskDay'))
                                       .catchError((error) => (error));
                                   Navigator.pushNamed(context, '/');
                                 },
