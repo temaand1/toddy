@@ -16,13 +16,13 @@ class _AddButtonState extends State<AddButton> {
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   final bool taskInit = false;
-  User? loggedUser = FirebaseAuth.instance.currentUser;
+  String loggedUser = FirebaseAuth.instance.currentUser!.email.toString();
 
   @override
   void initState() {
     // getCurrentUser();
     super.initState();
-    print(loggedUser!.email);
+    print(loggedUser);
   }
 
   // void getCurrentUser() async {
@@ -89,10 +89,10 @@ class _AddButtonState extends State<AddButton> {
                                   //   Navigator.pushNamed(context, '/');
                                   // });
                                   _firestore
-                                      .collection('$loggedUser.email')
+                                      .collection('$loggedUser')
                                       .doc('$newTaskTitle')
                                       .set({
-                                        'userEmail': loggedUser!.email,
+                                        'userEmail': loggedUser,
                                         'taskName': newTaskTitle,
                                         'taskDate': DateFormat.yMd()
                                             .format(DateTime.now()),

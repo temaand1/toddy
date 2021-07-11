@@ -16,9 +16,7 @@ class LoginState extends State<Login> {
 
   signOut() async {
     await _auth.signOut();
-    runApp(new MaterialApp(
-      home: new Login(),
-    ));
+    Navigator.pushNamed(context, 'Login');
   }
 
   @override

@@ -20,7 +20,7 @@ class Toddy extends StatelessWidget {
       create: (BuildContext context) => TaskData(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'Login',
+        initialRoute: '/',
         routes: {
           '/': (context) => TasksScreen(),
           'Login': (context) => Login(),

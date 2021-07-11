@@ -92,6 +92,7 @@ class _TaskbodyState extends State<Taskbody> {
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   User? loggedUser = FirebaseAuth.instance.currentUser;
+  String userEmail = FirebaseAuth.instance.currentUser!.email.toString();
 
   @override
   void initState() {
@@ -116,7 +117,7 @@ class _TaskbodyState extends State<Taskbody> {
         borderRadius: BorderRadius.all(Radius.circular(25)),
       ),
       child: StreamBuilder(
-          stream: _firestore.collection('$loggedUser.email').snapshots(),
+          stream: _firestore.collection('$userEmail').snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
             if (streamSnapshot.hasData) {
               return ListView.builder(
@@ -135,12 +136,25 @@ class _TaskbodyState extends State<Taskbody> {
                         isChecked: streamSnapshot.data!.docs[index]['isDone'],
 
                         onTap: (bool? newValue) {
+                          String currentTaskName =
+                              streamSnapshot.data!.docs[index]['taskName'];
+
+                          void updateValue() async {
+                            final currentTask = _firestore
+                                .collection('$userEmail')
+                                .doc("$currentTaskName");
+                            return await currentTask.set({
+                              'isDone': !streamSnapshot.data!.docs[index]
+                                  ['isDone'],
+                              'taskName': streamSnapshot.data!.docs[index]
+                                  ['taskName'],
+                              'taskDate': streamSnapshot.data!.docs[index]
+                                  ['taskDate']
+                            });
+                          }
+
                           setState(() {
-                            _firestore
-                                .collection('users')
-                                .doc(
-                                    "$streamSnapshot.data!.docs[index]['taskName']")
-                                .update({'isDone': false});
+                            updateValue();
                           });
                         },
                         // onLongTap: () {
@@ -155,7 +169,7 @@ class _TaskbodyState extends State<Taskbody> {
                 itemCount: streamSnapshot.data!.docs.length,
               );
             } else
-              return CircularProgressIndicator.adaptive();
+              return Center(child: CircularProgressIndicator.adaptive());
           }),
     );
   }
