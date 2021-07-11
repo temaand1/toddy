@@ -1,12 +1,17 @@
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 
-class Task with ChangeNotifier {
-  final String name;
-  bool isChecked;
+class Task {
+  String name;
 
-  Task({required this.name, this.isChecked = false});
+  bool isDone;
+
+  Task({
+    required this.name,
+    this.isDone = false,
+  });
 
   void toggleDone() {
-    isChecked = !isChecked;
+    isDone = !isDone;
   }
 }
