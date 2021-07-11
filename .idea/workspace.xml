@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="afa351aa-92ed-4241-baf7-2cf5423d0011" name="Default Changelist" comment="" />
+    <list default="true" id="afa351aa-92ed-4241-baf7-2cf5423d0011" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1tttvl84mo4EWUAak4VEJJtgZIc" />
   <component name="ProjectViewState">
@@ -38,6 +50,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="581" y="185" key="FileChooserDialogImpl" timestamp="1626022667663">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="581" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1626022667663" />
     <state width="1556" height="2" key="GridCell.Tab.0.bottom" timestamp="1624550806916">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -58,10 +74,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="302" y="73" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1624202661220" />
-    <state x="495" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1624547887784">
+    <state x="495" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1626022517730">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="495" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1624547887784" />
+    <state x="495" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1626022517730" />
     <state x="494" y="28" width="613" height="804" key="find.popup" timestamp="1623613025422">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

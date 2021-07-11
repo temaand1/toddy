@@ -38,23 +38,23 @@ class LoginState extends State<Login> {
     return Scaffold(
         backgroundColor: kMainBlue,
         appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Hero(
-              tag: 'icon',
-              child: Image.asset(
-                'assets/icon.png',
-                width: 30,
-                height: 30,
-              ),
-            ),
-          ),
+          title: Text('SignIn or SignUp'),
           backgroundColor: kAccentColor,
         ),
         body: Padding(
             padding: EdgeInsets.all(16),
             child: Column(
               children: <Widget>[
+                Center(
+                  child: Hero(
+                    tag: 'icon',
+                    child: Image.asset(
+                      'assets/icon.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                ),
                 Padding(
                     padding: EdgeInsets.only(bottom: 16),
                     child: TextField(
