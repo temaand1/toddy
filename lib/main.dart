@@ -5,8 +5,6 @@ import 'package:toddyapp/models/task_data.dart';
 import 'package:toddyapp/screens/login.dart';
 import 'package:toddyapp/screens/registration.dart';
 
-import 'package:toddyapp/screens/tasks_screen.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

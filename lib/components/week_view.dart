@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:toddyapp/constants.dart';
 import 'package:intl/intl.dart';
+import 'package:toddyapp/models/task_data.dart';
 
 class WeekView extends StatefulWidget {
   @override
@@ -78,6 +80,10 @@ class WeekViewState extends State<WeekView> {
                                 ]))),
                     onTap: () {
                       setState(() {
+                        Provider.of<TaskData>(context, listen: false)
+                            .currentDayUpdate(position);
+                        print(Provider.of<TaskData>(context, listen: false)
+                            .dayToShow);
                         selectDate = DateTime.now()
                             .add(Duration(days: position))
                             .day

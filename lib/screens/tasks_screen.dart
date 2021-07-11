@@ -3,12 +3,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:toddyapp/components/add_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toddyapp/components/task_tile.dart';
 import 'package:toddyapp/components/week_view.dart';
 import 'package:toddyapp/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:toddyapp/models/task_data.dart';
 
 class TasksScreen extends StatefulWidget {
   @override
@@ -134,7 +136,7 @@ class _TaskbodyState extends State<Taskbody> {
                 itemBuilder: (BuildContext context, int index) {
                   var docId = streamSnapshot.data!.docs[index].id;
                   if (streamSnapshot.data!.docs[index]['taskDate'] ==
-                      DateFormat.yMd().format(DateTime.now())) {
+                      Provider.of<TaskData>(context).dayToShow) {
                     return GestureDetector(
                       onTap: () {
                         print(streamSnapshot.data!.docs[index]['isDone']);

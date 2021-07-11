@@ -48,6 +48,7 @@ class RegistrationState extends State<Registration> {
                 TextButton(
                   onPressed: () async {
                     try {
+                      // ignore: unused_local_variable
                       final user = await _auth.createUserWithEmailAndPassword(
                           email: emailController.text,
                           password: passwordController.text);

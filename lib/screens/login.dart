@@ -38,102 +38,112 @@ class LoginState extends State<Login> {
     return Scaffold(
         backgroundColor: kMainBlue,
         appBar: AppBar(
-          title: Text('SignIn or SignUp'),
+          title: Text('Welcome'),
           backgroundColor: kAccentColor,
+          actions: [
+            Hero(
+              tag: 'icon',
+              child: Image.asset(
+                'assets/icon.png',
+                width: 100,
+                height: 100,
+              ),
+            ),
+          ],
         ),
         body: Padding(
             padding: EdgeInsets.all(16),
-            child: Column(
-              children: <Widget>[
-                Center(
-                  child: Hero(
-                    tag: 'icon',
-                    child: Image.asset(
-                      'assets/icon.png',
-                      width: 100,
-                      height: 100,
-                    ),
-                  ),
+            child: Center(
+              child: Container(
+                height: 236,
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 16),
-                    child: TextField(
-                      style: TextStyle(color: Colors.white),
-                      keyboardType: TextInputType.emailAddress,
-                      controller: emailController,
-                      decoration: InputDecoration(
-                          focusColor: kAccentColor,
-                          border: OutlineInputBorder(),
-                          labelText: 'Email'),
-                    )),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 16),
-                    child: TextField(
-                      controller: passwordController,
-                      style: TextStyle(color: Colors.white),
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(), labelText: 'Password'),
-                    )),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
                   children: [
-                    TextButton(
-                      onPressed: () async {
-                        try {
-                          final user =
-                              await _auth.createUserWithEmailAndPassword(
-                                  email: emailController.text,
-                                  password: passwordController.text);
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 16),
+                        child: TextField(
+                          keyboardType: TextInputType.emailAddress,
+                          controller: emailController,
+                          decoration: InputDecoration(
+                              focusColor: kAccentColor,
+                              border: OutlineInputBorder(),
+                              labelText: 'Email'),
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 16),
+                        child: TextField(
+                          controller: passwordController,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Password'),
+                        )),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
+                          onPressed: () async {
+                            try {
+                              // ignore: unused_local_variable
+                              final user =
+                                  await _auth.createUserWithEmailAndPassword(
+                                      email: emailController.text,
+                                      password: passwordController.text);
 
-                          Navigator.pushNamed(context, '/');
-                        } catch (e) {
-                          print(e);
-                        }
-                      },
-                      child: Container(
-                          width: 100,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: kAccentColor),
-                          child: Center(
-                            child: Text(
-                              'REGISTER',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          )),
-                    ),
-                    TextButton(
-                      onPressed: () async {
-                        try {
-                          final user = await _auth.signInWithEmailAndPassword(
-                              email: emailController.text,
-                              password: passwordController.text);
+                              Navigator.pushNamed(context, '/');
+                            } catch (e) {
+                              print(e);
+                            }
+                          },
+                          child: Container(
+                              width: 100,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: kAccentColor),
+                              child: Center(
+                                child: Text(
+                                  'REGISTER',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              )),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            try {
+                              // ignore: unused_local_variable
+                              final user =
+                                  await _auth.signInWithEmailAndPassword(
+                                      email: emailController.text,
+                                      password: passwordController.text);
 
-                          Navigator.pushNamed(context, '/');
-                        } catch (e) {
-                          print(e);
-                        }
-                      },
-                      child: Container(
-                          width: 100,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: kAccentColor),
-                          child: Center(
-                            child: Text(
-                              'LOGIN',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          )),
-                    ),
+                              Navigator.pushNamed(context, '/');
+                            } catch (e) {
+                              print(e);
+                            }
+                          },
+                          child: Container(
+                              width: 100,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: kAccentColor),
+                              child: Center(
+                                child: Text(
+                                  'LOGIN',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              )),
+                        ),
+                      ],
+                    )
                   ],
-                )
-              ],
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
+                ),
+              ),
             )));
   }
 }

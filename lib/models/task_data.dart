@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:toddyapp/components/task_model.dart';
 
 class TaskData extends ChangeNotifier {
@@ -6,6 +7,14 @@ class TaskData extends ChangeNotifier {
 
   int get taskCount {
     return tasks.length;
+  }
+
+  String dayToShow = DateFormat.yMd().format(DateTime.now());
+
+  void currentDayUpdate(int day) {
+    dayToShow =
+        DateFormat.yMd().format(DateTime.now().add(Duration(days: day)));
+    notifyListeners();
   }
 
   void addTask(String newTaskTitle) {
