@@ -8,8 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toddyapp/components/task_tile.dart';
 import 'package:toddyapp/components/week_view.dart';
 import 'package:toddyapp/constants.dart';
-import 'package:provider/provider.dart';
-import 'package:toddyapp/models/task_data.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TasksScreen extends StatefulWidget {
   @override
@@ -65,10 +64,10 @@ class _TasksScreenState extends State<TasksScreen> {
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       child: Text(
                         userEmail,
-                        style: TextStyle(
-                            color: kMainBlue,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                        style: GoogleFonts.martelSans(
+                          color: kMainBlue,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                   ],
@@ -133,36 +132,50 @@ class _TaskbodyState extends State<Taskbody> {
                         print(streamSnapshot.data!.docs[index]['isDone']);
                       },
                       child: TaskTile(
-                        text: streamSnapshot.data!.docs[index]['taskName'],
-                        isChecked: streamSnapshot.data!.docs[index]['isDone'],
+                          text: streamSnapshot.data!.docs[index]['taskName'],
+                          isChecked: streamSnapshot.data!.docs[index]['isDone'],
+                          onTap: (bool? newValue) {
+                            String currentTaskName =
+                                streamSnapshot.data!.docs[index]['taskName'];
 
-                        onTap: (bool? newValue) {
-                          String currentTaskName =
-                              streamSnapshot.data!.docs[index]['taskName'];
+                            void updateValue() async {
+                              final currentTask = _firestore
+                                  .collection('$userEmail')
+                                  .doc("$currentTaskName");
+                              return await currentTask.set({
+                                'isDone': !streamSnapshot.data!.docs[index]
+                                    ['isDone'],
+                                'taskName': streamSnapshot.data!.docs[index]
+                                    ['taskName'],
+                                'taskDate': streamSnapshot.data!.docs[index]
+                                    ['taskDate']
+                              });
+                            }
 
-                          void updateValue() async {
-                            final currentTask = _firestore
-                                .collection('$userEmail')
-                                .doc("$currentTaskName");
-                            return await currentTask.set({
-                              'isDone': !streamSnapshot.data!.docs[index]
-                                  ['isDone'],
-                              'taskName': streamSnapshot.data!.docs[index]
-                                  ['taskName'],
-                              'taskDate': streamSnapshot.data!.docs[index]
-                                  ['taskDate']
+                            setState(() {
+                              updateValue();
+                            });
+                          },
+                          onLongTap: () {
+                            String currentTaskName =
+                                streamSnapshot.data!.docs[index]['taskName'];
+
+                            void updateValue() async {
+                              final currentTask = _firestore
+                                  .collection('$userEmail')
+                                  .doc("$currentTaskName");
+                              return await currentTask.delete();
+                            }
+
+                            setState(() {
+                              updateValue();
+                              Navigator.pop(context);
                             });
                           }
-
-                          setState(() {
-                            updateValue();
-                          });
-                        },
-                        // onLongTap: () {
-                        //   taskData.removeTask(taskData.tasks[index]);
-                        //   Navigator.pop(context);
-                        // },
-                      ),
+                          //   taskData.removeTask(taskData.tasks[index]);
+                          //   Navigator.pop(context);
+                          // },
+                          ),
                     );
                   }
                   return Container();

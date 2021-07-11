@@ -1,6 +1,20 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:toddyapp/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:toddyapp/screens/tasks_screen.dart';
+
+class WelcomeScreen extends StatelessWidget {
+  final currentUser = FirebaseAuth.instance.currentUser;
+
+  @override
+  Widget build(BuildContext context) {
+    if (currentUser != null) {
+      return TasksScreen();
+    }
+    return Login();
+  }
+}
 
 class Login extends StatefulWidget {
   @override
@@ -14,9 +28,13 @@ class LoginState extends State<Login> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  signOut() async {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  logOut() async {
     await _auth.signOut();
-    Navigator.pushNamed(context, 'Login');
   }
 
   @override
@@ -26,7 +44,26 @@ class LoginState extends State<Login> {
           backgroundColor: kAccentColor,
           child: Icon(Icons.logout),
           onPressed: () {
-            setState(() => signOut());
+            showCupertinoDialog(
+                context: context,
+                builder: (context) => CupertinoAlertDialog(
+                      title: Text('Log Out'),
+                      actions: [
+                        CupertinoDialogAction(
+                          child: Text("No"),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        CupertinoDialogAction(
+                          child: Text("Yes"),
+                          onPressed: () {
+                            logOut();
+                            Navigator.pushNamed(context, 'Login');
+                          },
+                        )
+                      ],
+                    ));
           },
         ),
         backgroundColor: kMainBlue,
@@ -41,6 +78,7 @@ class LoginState extends State<Login> {
                 Padding(
                     padding: EdgeInsets.only(bottom: 16),
                     child: TextField(
+                      style: TextStyle(color: Colors.white),
                       keyboardType: TextInputType.emailAddress,
                       controller: emailController,
                       decoration: InputDecoration(

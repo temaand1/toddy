@@ -22,7 +22,7 @@ class Toddy extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          '/': (context) => TasksScreen(),
+          '/': (context) => WelcomeScreen(),
           'Login': (context) => Login(),
           'SingUp': (context) => Registration(),
         },
