@@ -33,42 +33,22 @@ class LoginState extends State<Login> {
     super.initState();
   }
 
-  logOut() async {
-    await _auth.signOut();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: kAccentColor,
-          child: Icon(Icons.logout),
-          onPressed: () {
-            showCupertinoDialog(
-                context: context,
-                builder: (context) => CupertinoAlertDialog(
-                      title: Text('Log Out'),
-                      actions: [
-                        CupertinoDialogAction(
-                          child: Text("No"),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                        CupertinoDialogAction(
-                          child: Text("Yes"),
-                          onPressed: () {
-                            logOut();
-                            Navigator.pushNamed(context, 'Login');
-                          },
-                        )
-                      ],
-                    ));
-          },
-        ),
         backgroundColor: kMainBlue,
         appBar: AppBar(
-          title: Text('Please log in'),
+          leading: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Hero(
+              tag: 'icon',
+              child: Image.asset(
+                'assets/icon.png',
+                width: 30,
+                height: 30,
+              ),
+            ),
+          ),
           backgroundColor: kAccentColor,
         ),
         body: Padding(

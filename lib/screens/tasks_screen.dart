@@ -17,6 +17,12 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
   String userEmail = FirebaseAuth.instance.currentUser!.email.toString();
+  final _auth = FirebaseAuth.instance;
+
+  logOut() async {
+    await _auth.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,31 +48,33 @@ class _TasksScreenState extends State<TasksScreen> {
                         Navigator.pushNamed(context, 'Login');
                       },
                       child: Hero(
-                        tag: 'person',
+                        tag: 'icon',
                         child: Container(
+                          padding: EdgeInsets.all(3),
                           width: 50,
                           height: 50,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
                               color: Colors.white),
-                          child: Icon(
-                            Icons.person,
-                            size: 38,
-                            color: kAccentColor,
+                          child: Image.asset(
+                            'assets/icon.png',
+                            width: 30,
+                            height: 30,
                           ),
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
-                      child: Text(
-                        userEmail,
-                        style: GoogleFonts.martelSans(
-                          color: kMainBlue,
-                          fontSize: 20,
+                    GestureDetector(
+                      onTap: () {
+                        logOut();
+                        Navigator.pushNamed(context, 'Login');
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(3),
+                        child: Icon(
+                          Icons.logout_sharp,
+                          size: 35,
+                          color: kAccentColor,
                         ),
                       ),
                     ),
