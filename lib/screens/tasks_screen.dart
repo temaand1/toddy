@@ -17,6 +17,7 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
+  String userEmail = FirebaseAuth.instance.currentUser!.email.toString();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,9 +51,9 @@ class _TasksScreenState extends State<TasksScreen> {
                               borderRadius: BorderRadius.circular(50),
                               color: Colors.white),
                           child: Icon(
-                            Icons.today_outlined,
+                            Icons.person,
                             size: 38,
-                            color: kMainBlue,
+                            color: kAccentColor,
                           ),
                         ),
                       ),
@@ -63,10 +64,10 @@ class _TasksScreenState extends State<TasksScreen> {
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       child: Text(
-                        'Active Tasks  ${Provider.of<TaskData>(context).taskCount}',
+                        userEmail,
                         style: TextStyle(
                             color: kMainBlue,
-                            fontSize: 30,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -90,7 +91,7 @@ class Taskbody extends StatefulWidget {
 
 class _TaskbodyState extends State<Taskbody> {
   final _firestore = FirebaseFirestore.instance;
-  final _auth = FirebaseAuth.instance;
+
   User? loggedUser = FirebaseAuth.instance.currentUser;
   String userEmail = FirebaseAuth.instance.currentUser!.email.toString();
 
