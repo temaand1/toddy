@@ -16,19 +16,19 @@ class _AddButtonState extends State<AddButton> {
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   final bool taskInit = false;
-  User? loggedUser;
+  User? loggedUser = FirebaseAuth.instance.currentUser;
 
   @override
   void initState() {
-    getCurrentUser();
+    // getCurrentUser();
     super.initState();
     print(loggedUser!.email);
   }
 
-  void getCurrentUser() async {
-    User? user = FirebaseAuth.instance.currentUser;
-    loggedUser = user;
-  }
+  // void getCurrentUser() async {
+  //   User? user = FirebaseAuth.instance.currentUser;
+  //   loggedUser = user;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +89,7 @@ class _AddButtonState extends State<AddButton> {
                                   //   Navigator.pushNamed(context, '/');
                                   // });
                                   _firestore
-                                      .collection('users')
+                                      .collection('$loggedUser.email')
                                       .doc('$newTaskTitle')
                                       .set({
                                         'userEmail': loggedUser!.email,

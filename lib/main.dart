@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toddyapp/models/task_data.dart';
 import 'package:toddyapp/screens/login.dart';
+import 'package:toddyapp/screens/registration.dart';
 
 import 'package:toddyapp/screens/tasks_screen.dart';
 
@@ -15,20 +16,17 @@ void main() async {
 class Toddy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: Firebase.initializeApp(),
-        builder: (context, snapshot) {
-          return ChangeNotifierProvider<TaskData>(
-            create: (BuildContext context) => TaskData(),
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              initialRoute: '/',
-              routes: {
-                '/': (context) => TasksScreen(),
-                'Login': (context) => Login(),
-              },
-            ),
-          );
-        });
+    return ChangeNotifierProvider<TaskData>(
+      create: (BuildContext context) => TaskData(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: 'Login',
+        routes: {
+          '/': (context) => TasksScreen(),
+          'Login': (context) => Login(),
+          'SingUp': (context) => Registration(),
+        },
+      ),
+    );
   }
 }

@@ -14,9 +14,23 @@ class LoginState extends State<Login> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  signOut() async {
+    await _auth.signOut();
+    runApp(new MaterialApp(
+      home: new Login(),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: kAccentColor,
+          child: Icon(Icons.logout),
+          onPressed: () {
+            setState(() => signOut());
+          },
+        ),
         backgroundColor: kMainBlue,
         appBar: AppBar(
           title: Text('Please log in'),
@@ -45,30 +59,61 @@ class LoginState extends State<Login> {
                       decoration: InputDecoration(
                           border: OutlineInputBorder(), labelText: 'Password'),
                     )),
-                TextButton(
-                  onPressed: () async {
-                    try {
-                      final user = await _auth.signInWithEmailAndPassword(
-                          email: emailController.text,
-                          password: passwordController.text);
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      onPressed: () async {
+                        try {
+                          final user =
+                              await _auth.createUserWithEmailAndPassword(
+                                  email: emailController.text,
+                                  password: passwordController.text);
 
-                      Navigator.pushNamed(context, '/');
-                    } catch (e) {
-                      print(e);
-                    }
-                  },
-                  child: Container(
-                      width: 100,
-                      height: 40,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: kAccentColor),
-                      child: Center(
-                        child: Text(
-                          'LOGIN',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      )),
+                          Navigator.pushNamed(context, '/');
+                        } catch (e) {
+                          print(e);
+                        }
+                      },
+                      child: Container(
+                          width: 100,
+                          height: 40,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: kAccentColor),
+                          child: Center(
+                            child: Text(
+                              'REGISTER',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          )),
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        try {
+                          final user = await _auth.signInWithEmailAndPassword(
+                              email: emailController.text,
+                              password: passwordController.text);
+
+                          Navigator.pushNamed(context, '/');
+                        } catch (e) {
+                          print(e);
+                        }
+                      },
+                      child: Container(
+                          width: 100,
+                          height: 40,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: kAccentColor),
+                          child: Center(
+                            child: Text(
+                              'LOGIN',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          )),
+                    ),
+                  ],
                 )
               ],
               mainAxisAlignment: MainAxisAlignment.center,

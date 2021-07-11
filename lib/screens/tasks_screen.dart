@@ -91,21 +91,12 @@ class Taskbody extends StatefulWidget {
 class _TaskbodyState extends State<Taskbody> {
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
-  User? loggedUser;
+  User? loggedUser = FirebaseAuth.instance.currentUser;
 
   @override
   void initState() {
-    getCurrentUser();
-    // getTasks();
-
     super.initState();
     print(loggedUser!.email);
-  }
-
-  void getCurrentUser() async {
-    _auth.authStateChanges();
-    User? user = FirebaseAuth.instance.currentUser;
-    loggedUser = user;
   }
 
   // void getTasks() async {
@@ -125,7 +116,7 @@ class _TaskbodyState extends State<Taskbody> {
         borderRadius: BorderRadius.all(Radius.circular(25)),
       ),
       child: StreamBuilder(
-          stream: _firestore.collection('users').snapshots(),
+          stream: _firestore.collection('$loggedUser.email').snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
             if (streamSnapshot.hasData) {
               return ListView.builder(
