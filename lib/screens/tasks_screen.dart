@@ -47,7 +47,9 @@ class _TasksScreenState extends State<TasksScreen> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, 'Login');
+                        _auth.currentUser != null
+                            ? Navigator.pushNamed(context, 'User')
+                            : Navigator.pushNamed(context, 'Login');
                       },
                       child: Hero(
                         tag: 'icon',
@@ -109,13 +111,6 @@ class _TaskbodyState extends State<Taskbody> {
     super.initState();
     print(loggedUser!.email);
   }
-
-  // void getTasks() async {
-  //   final tasks = await _firestore.collection('users').get();
-  //   for (var task in tasks.docChanges) {
-  //     print(task.doc);
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -181,11 +176,7 @@ class _TaskbodyState extends State<Taskbody> {
                               updateValue();
                               Navigator.pop(context);
                             });
-                          }
-                          //   taskData.removeTask(taskData.tasks[index]);
-                          //   Navigator.pop(context);
-                          // },
-                          ),
+                          }),
                     );
                   }
                   return Container();

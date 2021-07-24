@@ -65,7 +65,11 @@ class LoginState extends State<Login> {
                   children: [
                     Padding(
                         padding: EdgeInsets.only(bottom: 16),
-                        child: TextField(
+                        child: TextFormField(
+                          validator: (value) =>
+                              value!.isEmpty || value.contains('@')
+                                  ? 'Email cannot be blank'
+                                  : null,
                           keyboardType: TextInputType.emailAddress,
                           controller: emailController,
                           decoration: InputDecoration(

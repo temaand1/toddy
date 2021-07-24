@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:toddyapp/components/task_model.dart';
+import 'package:toddyapp/models/task_model.dart';
 
 class TaskData extends ChangeNotifier {
   List<Task> tasks = [Task(name: 'Long press to delete :)')];

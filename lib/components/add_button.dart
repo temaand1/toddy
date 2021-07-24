@@ -19,15 +19,11 @@ class _AddButtonState extends State<AddButton> {
 
   @override
   void initState() {
-    // getCurrentUser();
     super.initState();
     print(loggedUser);
   }
 
-  // void getCurrentUser() async {
-  //   User? user = FirebaseAuth.instance.currentUser;
-  //   loggedUser = user;
-  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -97,13 +93,7 @@ class _AddButtonState extends State<AddButton> {
                               padding: EdgeInsets.only(bottom: 10),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  // setState(() {
-                                  //   print(newTaskTitle);
-                                  //   Provider.of<TaskData>(context,
-                                  //           listen: false)
-                                  //       .addTask(newTaskTitle);
-                                  //   Navigator.pushNamed(context, '/');
-                                  // });
+                                  
                                   _firestore
                                       .collection('$loggedUser')
                                       .doc('$newTaskTitle')
