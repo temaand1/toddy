@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+import 'package:date_field/date_field.dart';
 import '../constants.dart';
 
 class AddButton extends StatefulWidget {
@@ -22,8 +22,6 @@ class _AddButtonState extends State<AddButton> {
     super.initState();
     print(loggedUser);
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +42,7 @@ class _AddButtonState extends State<AddButton> {
                     padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xff757575)),
-                      color: Color(0xff757575),
+                      color: Colors.grey.shade900,
                     ),
                     child: Container(
                       decoration: BoxDecoration(
@@ -71,21 +68,23 @@ class _AddButtonState extends State<AddButton> {
                               },
                               textAlign: TextAlign.center,
                               autofocus: true,
-                              decoration: InputDecoration(),
+                              decoration:
+                                  InputDecoration(border: OutlineInputBorder()),
                             ),
                             SizedBox(height: 20),
                             Container(
                               height: 100,
-                              child: CupertinoDatePicker(
-                                mode: CupertinoDatePickerMode.date,
-                                initialDateTime: DateTime.now(),
-                                onDateTimeChanged: (DateTime newDateTime) {
-                                  setState(() {
-                                    taskDay =
-                                        DateFormat.yMd().format(newDateTime);
-                                    print(taskDay);
-                                  });
+                              child: DateTimeField(
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  suffixIcon: Icon(Icons.event_note),
+                                ),
+                                mode: DateTimeFieldPickerMode.date,
+                                onDateSelected: (DateTime value) {
+                                  taskDay = DateFormat.yMd().format(value);
+                                  print(taskDay);
                                 },
+                                selectedDate: DateTime.now(),
                               ),
                             ),
                             SizedBox(height: 20),
@@ -93,7 +92,6 @@ class _AddButtonState extends State<AddButton> {
                               padding: EdgeInsets.only(bottom: 10),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  
                                   _firestore
                                       .collection('$loggedUser')
                                       .doc('$newTaskTitle')
