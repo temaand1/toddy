@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1022454168681-b992abg9pmmgo7e63rn19qk0au8hohvt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.temaandone.toddyapp",
+            "certificate_hash": "d9ba2ec90a56a98027aaf76e5b12527c0597953d"
+          }
+        },
+        {
           "client_id": "1022454168681-jmtsg6gvo6d0v9usm1c64iup2l287me7.apps.googleusercontent.com",
           "client_type": 3
         }

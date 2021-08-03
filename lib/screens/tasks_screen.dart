@@ -1,15 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
 import 'package:provider/provider.dart';
 import 'package:toddyapp/components/add_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toddyapp/components/task_tile.dart';
 import 'package:toddyapp/components/week_view.dart';
 import 'package:toddyapp/constants.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:toddyapp/models/google_auth.dart';
+
 import 'package:toddyapp/models/task_data.dart';
 
 class TasksScreen extends StatefulWidget {
@@ -71,6 +72,7 @@ class _TasksScreenState extends State<TasksScreen> {
                     GestureDetector(
                       onTap: () {
                         logOut();
+                        GoogleAuth().signOutFromGoogle();
                         Navigator.pushNamed(context, 'Login');
                       },
                       child: Container(
@@ -129,6 +131,7 @@ class _TaskbodyState extends State<Taskbody> {
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
+                  // ignore: unused_local_variable
                   var docId = streamSnapshot.data!.docs[index].id;
                   if (streamSnapshot.data!.docs[index]['taskDate'] ==
                       Provider.of<TaskData>(context).dayToShow) {

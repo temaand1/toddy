@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:toddyapp/models/task_data.dart';
 import 'package:toddyapp/screens/login.dart';
 import 'package:toddyapp/screens/registration.dart';
+import 'package:toddyapp/screens/tasks_screen.dart';
 import 'package:toddyapp/screens/user_page.dart';
 
 void main() async {
@@ -25,6 +26,7 @@ class Toddy extends StatelessWidget {
           'User': (context) => UserPage(),
           'Login': (context) => Login(),
           'SingUp': (context) => Registration(),
+          'TaskScreen': (context) => TasksScreen(),
         },
       ),
     );
