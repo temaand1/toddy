@@ -19,6 +19,10 @@ class Toddy extends StatelessWidget {
     return ChangeNotifierProvider<TaskData>(
       create: (BuildContext context) => TaskData(),
       child: MaterialApp(
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.grey,
+        )),
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {

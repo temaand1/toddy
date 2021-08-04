@@ -27,6 +27,7 @@ class _AddButtonState extends State<AddButton> {
   Widget build(BuildContext context) {
     String newTaskTitle = "";
     String taskDay = DateFormat.yMd().format(DateTime.now());
+    DateTime selectedDate = DateTime.now();
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -76,15 +77,16 @@ class _AddButtonState extends State<AddButton> {
                               height: 100,
                               child: DateTimeField(
                                 decoration: InputDecoration(
+                                  fillColor: kMainBlue,
                                   border: OutlineInputBorder(),
                                   suffixIcon: Icon(Icons.event_note),
                                 ),
                                 mode: DateTimeFieldPickerMode.date,
                                 onDateSelected: (DateTime value) {
                                   taskDay = DateFormat.yMd().format(value);
-                                  print(taskDay);
+                                  selectedDate = value;
                                 },
-                                selectedDate: DateTime.now(),
+                                selectedDate: selectedDate,
                               ),
                             ),
                             SizedBox(height: 20),
@@ -110,7 +112,7 @@ class _AddButtonState extends State<AddButton> {
                                 style: ButtonStyle(
                                     foregroundColor:
                                         MaterialStateProperty.all<Color>(
-                                            Colors.white),
+                                            kAccentColor),
                                     minimumSize: MaterialStateProperty.all(
                                         Size(double.maxFinite, 50)),
                                     backgroundColor:
