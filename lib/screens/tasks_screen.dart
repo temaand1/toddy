@@ -46,42 +46,45 @@ class _TasksScreenState extends State<TasksScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    Hero(
+                      tag: 'icon',
+                      child: Container(
+                        padding: EdgeInsets.all(3),
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.white),
+                        child: Image.asset(
+                          'assets/icon.png',
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
+                    ),
                     GestureDetector(
                       onTap: () {
                         _auth.currentUser != null
                             ? Navigator.pushNamed(context, 'User')
                             : Navigator.pushNamed(context, 'Login');
                       },
-                      child: Hero(
-                        tag: 'icon',
-                        child: Container(
-                          padding: EdgeInsets.all(3),
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Colors.white),
-                          child: Image.asset(
-                            'assets/icon.png',
-                            width: 30,
-                            height: 30,
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        logOut();
-                        GoogleAuth().signOutFromGoogle();
-                        Navigator.pushNamed(context, 'Login');
-                      },
                       child: Container(
                         padding: EdgeInsets.all(3),
-                        child: Icon(
-                          Icons.logout_sharp,
-                          size: 35,
-                          color: kAccentColor,
-                        ),
+                        child: CircleAvatar(
+                            radius: 20,
+                            backgroundColor: kMainBlue,
+                            child: Container(
+                              width: 35,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50)),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(45),
+                                child: Image(
+                                  image: NetworkImage(
+                                      _auth.currentUser!.photoURL.toString()),
+                                ),
+                              ),
+                            )),
                       ),
                     ),
                   ],

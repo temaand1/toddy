@@ -43,7 +43,10 @@ class _TaskTileState extends State<TaskTile> {
           ],
         ),
       ),
-      leading: Icon(IconData(widget.codePoint, fontFamily: 'CupertinoIcons')),
+      leading: Icon(
+        IconData(widget.codePoint, fontFamily: 'MaterialIcons'),
+        color: widget.isChecked ? kMainBlue : kAccentColor,
+      ),
       title: Text(
         widget.text,
         style: TextStyle(

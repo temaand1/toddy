@@ -28,7 +28,7 @@ class _AddButtonState extends State<AddButton> {
 
   _pickIcon() async {
     IconData? icon = await FlutterIconPicker.showIconPicker(context,
-        iconPackMode: IconPack.cupertino);
+        iconPackMode: IconPack.material);
 
     if (icon != null) {
       selectedIcon = icon.codePoint;
