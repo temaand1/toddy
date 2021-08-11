@@ -140,6 +140,7 @@ class _TaskbodyState extends State<Taskbody> {
                         print(streamSnapshot.data!.docs[index]['isDone']);
                       },
                       child: TaskTile(
+                          codePoint: streamSnapshot.data!.docs[index]['icon'],
                           text: streamSnapshot.data!.docs[index]['taskName'],
                           isChecked: streamSnapshot.data!.docs[index]['isDone'],
                           onTap: (bool? newValue) {
@@ -156,7 +157,9 @@ class _TaskbodyState extends State<Taskbody> {
                                 'taskName': streamSnapshot.data!.docs[index]
                                     ['taskName'],
                                 'taskDate': streamSnapshot.data!.docs[index]
-                                    ['taskDate']
+                                    ['taskDate'],
+                                'icon': streamSnapshot.data!.docs[index]
+                                    ['icon'],
                               });
                             }
 

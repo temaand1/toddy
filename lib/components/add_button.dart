@@ -2,9 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:date_field/date_field.dart';
 import '../constants.dart';
+import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 
 class AddButton extends StatefulWidget {
   @override
@@ -16,11 +18,25 @@ class _AddButtonState extends State<AddButton> {
 
   final bool taskInit = false;
   String loggedUser = FirebaseAuth.instance.currentUser!.email.toString();
+  int selectedIcon = Icons.circle.codePoint;
 
   @override
   void initState() {
     super.initState();
     print(loggedUser);
+  }
+
+  _pickIcon() async {
+    IconData? icon = await FlutterIconPicker.showIconPicker(context,
+        iconPackMode: IconPack.cupertino);
+
+    if (icon != null) {
+      selectedIcon = icon.codePoint;
+    }
+
+    setState(() {});
+
+    debugPrint('Picked Icon:  $icon');
   }
 
   @override
@@ -72,9 +88,8 @@ class _AddButtonState extends State<AddButton> {
                               decoration:
                                   InputDecoration(border: OutlineInputBorder()),
                             ),
-                            SizedBox(height: 20),
                             Container(
-                              height: 100,
+                              margin: EdgeInsets.symmetric(vertical: 15),
                               child: DateTimeField(
                                 decoration: InputDecoration(
                                   fillColor: kMainBlue,
@@ -89,35 +104,34 @@ class _AddButtonState extends State<AddButton> {
                                 selectedDate: selectedDate,
                               ),
                             ),
-                            SizedBox(height: 20),
-                            Padding(
-                              padding: EdgeInsets.only(bottom: 10),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  _firestore
-                                      .collection('$loggedUser')
-                                      .doc('$newTaskTitle')
-                                      .set({
-                                        'userEmail': loggedUser,
-                                        'taskName': newTaskTitle,
-                                        'taskDate': taskDay,
-                                        'isDone': taskInit
-                                      })
-                                      .then((value) =>
-                                          print('Task Add on $taskDay'))
-                                      .catchError((error) => (error));
-                                  Navigator.pushNamed(context, '/');
-                                },
-                                child: Text('Add'),
-                                style: ButtonStyle(
-                                    foregroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            kAccentColor),
-                                    minimumSize: MaterialStateProperty.all(
-                                        Size(double.maxFinite, 50)),
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            kMainBlue)),
+                            Container(
+                              margin: EdgeInsets.only(bottom: 15),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  ChooseIconButton(
+                                    onPressed: () => _pickIcon(),
+                                  ),
+                                  AddTaskButton(
+                                    onPressed: () {
+                                      _firestore
+                                          .collection('$loggedUser')
+                                          .doc('$newTaskTitle')
+                                          .set({
+                                            'userEmail': loggedUser,
+                                            'taskName': newTaskTitle,
+                                            'taskDate': taskDay,
+                                            'isDone': taskInit,
+                                            'icon': selectedIcon
+                                          })
+                                          .then((value) =>
+                                              print('Task Add on $taskDay'))
+                                          .catchError((error) => (error));
+                                      Navigator.pushNamed(context, '/');
+                                    },
+                                  )
+                                ],
                               ),
                             )
                           ],
@@ -131,5 +145,67 @@ class _AddButtonState extends State<AddButton> {
         child: Icon(Icons.add),
       ),
     );
+  }
+}
+
+class ChooseIconButton extends StatelessWidget {
+  final onPressed;
+  const ChooseIconButton({Key? key, this.onPressed}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+        onPressed: onPressed,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          height: 50,
+          width: 150,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25), color: kAccentColor),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              FaIcon(
+                FontAwesomeIcons.icons,
+                color: Colors.white,
+              ),
+              Text(
+                ' Choose Icon',
+                style: TextStyle(color: Colors.white),
+              )
+            ],
+          ),
+        ));
+  }
+}
+
+class AddTaskButton extends StatelessWidget {
+  final onPressed;
+  const AddTaskButton({Key? key, this.onPressed}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+        onPressed: onPressed,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          height: 50,
+          width: 150,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25), color: kAccentColor),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                'Add Task',
+                style: TextStyle(color: Colors.white),
+              ),
+              FaIcon(
+                FontAwesomeIcons.plusCircle,
+                color: Colors.white,
+              ),
+            ],
+          ),
+        ));
   }
 }

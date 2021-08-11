@@ -8,12 +8,14 @@ class TaskTile extends StatefulWidget {
   final String text;
   final onTap;
   final onLongTap;
+  final int codePoint;
 
   const TaskTile(
       {this.isChecked = false,
       required this.text,
       required this.onTap,
-      this.onLongTap});
+      this.onLongTap,
+      required this.codePoint});
 
   @override
   _TaskTileState createState() => _TaskTileState();
@@ -41,6 +43,7 @@ class _TaskTileState extends State<TaskTile> {
           ],
         ),
       ),
+      leading: Icon(IconData(widget.codePoint, fontFamily: 'CupertinoIcons')),
       title: Text(
         widget.text,
         style: TextStyle(
