@@ -21,6 +21,7 @@ class TasksScreen extends StatefulWidget {
 class _TasksScreenState extends State<TasksScreen> {
   String userEmail = FirebaseAuth.instance.currentUser!.email.toString();
   final _auth = FirebaseAuth.instance;
+  String? profileImage = FirebaseAuth.instance.currentUser!.photoURL;
 
   logOut() async {
     await _auth.signOut();
@@ -79,10 +80,16 @@ class _TasksScreenState extends State<TasksScreen> {
                                   borderRadius: BorderRadius.circular(50)),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(45),
-                                child: Image(
-                                  image: NetworkImage(
-                                      _auth.currentUser!.photoURL.toString()),
-                                ),
+                                child: (profileImage != null)
+                                    ? Image(
+                                        image: NetworkImage(_auth
+                                            .currentUser!.photoURL
+                                            .toString()),
+                                      )
+                                    : Icon(
+                                        Icons.person,
+                                        color: kAccentColor,
+                                      ),
                               ),
                             )),
                       ),

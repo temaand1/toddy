@@ -12,7 +12,7 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final _auth = FirebaseAuth.instance;
     final _userName = _auth.currentUser!.email.toString();
-    final _userAvatar = _auth.currentUser!.photoURL!;
+    final _userAvatar = _auth.currentUser?.photoURL;
     return SafeArea(
       child: Scaffold(
         backgroundColor: kMainBlue,
@@ -31,19 +31,26 @@ class UserPage extends StatelessWidget {
                   child: Column(
                     children: [
                       CircleAvatar(
-                          radius: 40,
-                          backgroundColor: kMainBlue,
-                          child: Container(
-                            width: 70,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50)),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(45),
-                              child: Image(
-                                image: NetworkImage(_userAvatar),
-                              ),
-                            ),
-                          )),
+                        radius: 40,
+                        backgroundColor: kMainBlue,
+                        child: Container(
+                          width: 70,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50)),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(45),
+                            child: (_userAvatar != null)
+                                ? Image(
+                                    image: NetworkImage(
+                                        _auth.currentUser!.photoURL.toString()),
+                                  )
+                                : Icon(
+                                    Icons.person,
+                                    color: kAccentColor,
+                                  ),
+                          ),
+                        ),
+                      ),
                       Container(
                         margin: EdgeInsets.only(top: 20),
                         padding: EdgeInsets.symmetric(horizontal: 10),
@@ -68,7 +75,7 @@ class UserPage extends StatelessWidget {
                       BigButton(
                           onPressed: () async {
                             await GoogleAuth().signOutFromGoogle();
-                            Navigator.pushNamed(context, 'Login');
+                            Navigator.pushNamed(context, '/');
                           },
                           name: 'Sing Out',
                           icon: FaIcon(
