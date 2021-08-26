@@ -2,10 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:toddyapp/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:toddyapp/models/google_auth.dart';
-import 'package:toddyapp/screens/tasks_screen.dart';
-
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -77,6 +73,7 @@ class LoginState extends State<Login> {
                               controller: passwordController,
                               obscureText: true,
                               decoration: InputDecoration(
+                                  hintText: 'Minimum 6 symbols',
                                   border: OutlineInputBorder(),
                                   labelText: 'Password'),
                             )),

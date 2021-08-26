@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:toddyapp/components/google_singIn.dart';
 import 'package:toddyapp/screens/tasks_screen.dart';
 import '../constants.dart';
-import 'login.dart';
 
 class WelcomeScreen extends StatelessWidget {
   final currentUser = FirebaseAuth.instance.currentUser;

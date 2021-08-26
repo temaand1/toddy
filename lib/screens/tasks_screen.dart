@@ -9,7 +9,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toddyapp/components/task_tile.dart';
 import 'package:toddyapp/components/week_view.dart';
 import 'package:toddyapp/constants.dart';
-import 'package:toddyapp/models/google_auth.dart';
 
 import 'package:toddyapp/models/task_data.dart';
 
@@ -200,7 +199,10 @@ class _TaskbodyState extends State<Taskbody> {
                 itemCount: streamSnapshot.data!.docs.length,
               );
             } else
-              return Center(child: CircularProgressIndicator.adaptive());
+              return Center(
+                  child: CircularProgressIndicator.adaptive(
+                backgroundColor: kAccentColor,
+              ));
           }),
     );
   }

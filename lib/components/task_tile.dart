@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 // ignore: unused_import
 import 'package:provider/provider.dart';
 import 'package:toddyapp/constants.dart';
@@ -27,7 +28,7 @@ class _TaskTileState extends State<TaskTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      isThreeLine: true,
+      
       onLongPress: () => showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
@@ -53,7 +54,6 @@ class _TaskTileState extends State<TaskTile> {
         style: TextStyle(
             decoration: widget.isChecked ? TextDecoration.lineThrough : null),
       ),
-      subtitle: Text('12.00 pm'),
       trailing: Checkbox(
         activeColor: kAccentColor,
         value: widget.isChecked,

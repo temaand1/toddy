@@ -9,12 +9,22 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="afa351aa-92ed-4241-baf7-2cf5423d0011" name="Default Changelist" comment="">
+    <list default="true" id="afa351aa-92ed-4241-baf7-2cf5423d0011" name="Default Changelist" comment="App sing">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/temaa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/temaa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/components/task_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/task_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/tasks_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/tasks_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/user_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/user_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/welcome_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/welcome_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +45,16 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="X:\Code\toddy\android\app" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -51,41 +69,59 @@
     </task>
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="App sing" />
+    <option name="LAST_COMMIT_MESSAGE" value="App sing" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="581" y="185" key="FileChooserDialogImpl" timestamp="1626022667663">
+    <state x="530" y="234" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1629651010777">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="581" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1626022667663" />
-    <state width="1556" height="167" key="GridCell.Tab.0.bottom" timestamp="1628757817907">
+    <state x="530" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.860@0.0.1600.860" timestamp="1629651010777" />
+    <state x="531" y="178" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1629649531122">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="2" key="GridCell.Tab.0.bottom/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1627909776997" />
-    <state width="1556" height="167" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1628757817907" />
-    <state width="1556" height="167" key="GridCell.Tab.0.center" timestamp="1628757817891">
+    <state x="531" y="178" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.860@0.0.1600.860" timestamp="1629649531122" />
+    <state x="454" y="25" key="CommitChangelistDialog2" timestamp="1629658167710">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="2" key="GridCell.Tab.0.center/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1627909776996" />
-    <state width="1556" height="167" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1628757817891" />
-    <state width="1556" height="167" key="GridCell.Tab.0.left" timestamp="1628757817891">
+    <state x="454" y="25" key="CommitChangelistDialog2/0.0.1600.860@0.0.1600.860" timestamp="1629658167710" />
+    <state x="581" y="183" key="FileChooserDialogImpl" timestamp="1629972310468">
+      <screen x="0" y="0" width="1600" height="852" />
+    </state>
+    <state x="581" y="183" key="FileChooserDialogImpl/0.0.1600.852@0.0.1600.852" timestamp="1629972310468" />
+    <state x="581" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1629649597579" />
+    <state width="1556" height="236" key="GridCell.Tab.0.bottom" timestamp="1629658195021">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="2" key="GridCell.Tab.0.left/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1627909776996" />
-    <state width="1556" height="167" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1628757817891" />
-    <state width="1556" height="167" key="GridCell.Tab.0.right" timestamp="1628757817907">
+    <state width="1556" height="236" key="GridCell.Tab.0.bottom/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1629653389440" />
+    <state width="1556" height="236" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1629658195021" />
+    <state width="1556" height="236" key="GridCell.Tab.0.center" timestamp="1629658195021">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state width="1556" height="2" key="GridCell.Tab.0.right/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1627909776996" />
-    <state width="1556" height="167" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1628757817907" />
-    <state x="302" y="73" key="SettingsEditor" timestamp="1629020986242">
+    <state width="1556" height="236" key="GridCell.Tab.0.center/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1629653389440" />
+    <state width="1556" height="236" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1629658195021" />
+    <state width="1556" height="236" key="GridCell.Tab.0.left" timestamp="1629658195021">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="302" y="73" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1629020986242" />
-    <state x="495" y="254" key="com.intellij.ide.util.TipDialog" timestamp="1629021015940">
+    <state width="1556" height="236" key="GridCell.Tab.0.left/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1629653389439" />
+    <state width="1556" height="236" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1629658195021" />
+    <state width="1556" height="236" key="GridCell.Tab.0.right" timestamp="1629658195021">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
+    <state width="1556" height="236" key="GridCell.Tab.0.right/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1629653389440" />
+    <state width="1556" height="236" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1629658195021" />
+    <state x="302" y="10" key="SettingsEditor" timestamp="1629220693068">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="302" y="10" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1629220693068" />
+    <state x="495" y="252" key="com.intellij.ide.util.TipDialog" timestamp="1629969061591">
+      <screen x="0" y="0" width="1600" height="852" />
+    </state>
+    <state x="495" y="252" key="com.intellij.ide.util.TipDialog/0.0.1600.852@0.0.1600.852" timestamp="1629969061591" />
     <state x="495" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1627909402033" />
     <state x="3623" y="215" key="com.intellij.ide.util.TipDialog/0.0.1600.860/3200.0.1366.728@3200.0.1366.728" timestamp="1627909861037" />
-    <state x="495" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1629021015940" />
+    <state x="495" y="254" key="com.intellij.ide.util.TipDialog/0.0.1600.860@0.0.1600.860" timestamp="1629648260735" />
     <state x="494" y="28" width="613" height="804" key="find.popup" timestamp="1623613025422">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

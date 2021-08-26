@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,6 +11,7 @@ class UserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _firestore = FirebaseFirestore.instance;
     final _auth = FirebaseAuth.instance;
     final _userName = _auth.currentUser!.email.toString();
     final _userAvatar = _auth.currentUser?.photoURL;
@@ -83,7 +85,17 @@ class UserPage extends StatelessWidget {
                             color: Colors.white,
                           )),
                       BigButton(
-                          onPressed: null,
+                          onPressed: () {
+                            _firestore
+                                .collection('$_userName')
+                                .get()
+                                .then((snapshot) {
+                              for (DocumentSnapshot ds in snapshot.docs) {
+                                ds.reference.delete();
+                              }
+                            });
+                            Navigator.pushNamed(context, '/');
+                          },
                           name: 'Delete all Todo',
                           icon: FaIcon(
                             FontAwesomeIcons.eraser,
