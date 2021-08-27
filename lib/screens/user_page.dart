@@ -75,6 +75,11 @@ class UserPage extends StatelessWidget {
                   child: Column(
                     children: [
                       BigButton(
+                          onPressed: () =>
+                              Navigator.pushNamed(context, 'ExpireTasks'),
+                          name: 'Expire tasks',
+                          icon: FaIcon(FontAwesomeIcons.tasks, color: Colors.white,)),
+                      BigButton(
                           onPressed: () async {
                             await GoogleAuth().signOutFromGoogle();
                             Navigator.pushNamed(context, '/');

@@ -10,21 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afa351aa-92ed-4241-baf7-2cf5423d0011" name="Default Changelist" comment="App sing">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/expire_task_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/temaa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/temaa.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/components/task_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/task_tile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/tasks_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/tasks_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/task_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/task_data.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/user_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/user_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/welcome_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/welcome_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +26,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1tttvl84mo4EWUAak4VEJJtgZIc" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
@@ -70,6 +65,7 @@
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="App sing" />
     <option name="LAST_COMMIT_MESSAGE" value="App sing" />
   </component>
@@ -91,24 +87,28 @@
     </state>
     <state x="581" y="183" key="FileChooserDialogImpl/0.0.1600.852@0.0.1600.852" timestamp="1629972310468" />
     <state x="581" y="185" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1629649597579" />
-    <state width="1556" height="236" key="GridCell.Tab.0.bottom" timestamp="1629658195021">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state width="1556" height="232" key="GridCell.Tab.0.bottom" timestamp="1630058378695">
+      <screen x="0" y="0" width="1600" height="852" />
     </state>
+    <state width="1556" height="232" key="GridCell.Tab.0.bottom/0.0.1600.852@0.0.1600.852" timestamp="1630058378695" />
     <state width="1556" height="236" key="GridCell.Tab.0.bottom/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1629653389440" />
     <state width="1556" height="236" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1629658195021" />
-    <state width="1556" height="236" key="GridCell.Tab.0.center" timestamp="1629658195021">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state width="1556" height="232" key="GridCell.Tab.0.center" timestamp="1630058378695">
+      <screen x="0" y="0" width="1600" height="852" />
     </state>
+    <state width="1556" height="232" key="GridCell.Tab.0.center/0.0.1600.852@0.0.1600.852" timestamp="1630058378695" />
     <state width="1556" height="236" key="GridCell.Tab.0.center/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1629653389440" />
     <state width="1556" height="236" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1629658195021" />
-    <state width="1556" height="236" key="GridCell.Tab.0.left" timestamp="1629658195021">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state width="1556" height="232" key="GridCell.Tab.0.left" timestamp="1630058378695">
+      <screen x="0" y="0" width="1600" height="852" />
     </state>
+    <state width="1556" height="232" key="GridCell.Tab.0.left/0.0.1600.852@0.0.1600.852" timestamp="1630058378695" />
     <state width="1556" height="236" key="GridCell.Tab.0.left/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1629653389439" />
     <state width="1556" height="236" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1629658195021" />
-    <state width="1556" height="236" key="GridCell.Tab.0.right" timestamp="1629658195021">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state width="1556" height="232" key="GridCell.Tab.0.right" timestamp="1630058378695">
+      <screen x="0" y="0" width="1600" height="852" />
     </state>
+    <state width="1556" height="232" key="GridCell.Tab.0.right/0.0.1600.852@0.0.1600.852" timestamp="1630058378695" />
     <state width="1556" height="236" key="GridCell.Tab.0.right/0.0.1600.860/3200.0.1366.728@0.0.1600.860" timestamp="1629653389440" />
     <state width="1556" height="236" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1629658195021" />
     <state x="302" y="10" key="SettingsEditor" timestamp="1629220693068">

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toddyapp/models/task_data.dart';
+import 'package:toddyapp/screens/expire_task_screen.dart';
 import 'package:toddyapp/screens/login.dart';
 
 import 'package:toddyapp/screens/tasks_screen.dart';
@@ -31,6 +32,7 @@ class Toddy extends StatelessWidget {
           'User': (context) => UserPage(),
           'Login': (context) => Login(),
           'TaskScreen': (context) => TasksScreen(),
+          'ExpireTasks': (context) => ExpireTasks()
         },
       ),
     );
