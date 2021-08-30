@@ -14,6 +14,7 @@ class LoginState extends State<Login> {
   final _auth = FirebaseAuth.instance;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -69,7 +70,11 @@ class LoginState extends State<Login> {
                             )),
                         Padding(
                             padding: EdgeInsets.only(bottom: 16),
-                            child: TextField(
+                            child: TextFormField(
+                              validator: (value) =>
+                                  value!.isEmpty || value.length < 6
+                                      ? 'Minimum 6 symbols'
+                                      : null,
                               controller: passwordController,
                               obscureText: true,
                               decoration: InputDecoration(
@@ -90,8 +95,62 @@ class LoginState extends State<Login> {
                                           password: passwordController.text);
 
                                   Navigator.pushNamed(context, '/');
-                                } catch (e) {
-                                  print(e);
+                                } on FirebaseException catch (e) {
+                                  if (e.code == 'invalid-email') {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text("Error"),
+                                            content: Text(
+                                                'Please enter correct email adress'),
+                                            actions: [
+                                              TextButton(
+                                                child: Text("Ok"),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              )
+                                            ],
+                                          );
+                                        });
+                                  } else if (e.code == 'weak-password') {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text("Error"),
+                                            content: Text(
+                                                'The password is too weak'),
+                                            actions: [
+                                              TextButton(
+                                                child: Text("Ok"),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              )
+                                            ],
+                                          );
+                                        });
+                                  } else if (e.code == 'email-already-in-use') {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text("Error"),
+                                            content:
+                                                Text('Email already in use'),
+                                            actions: [
+                                              TextButton(
+                                                child: Text("Ok"),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              )
+                                            ],
+                                          );
+                                        });
+                                  }
                                 }
                               },
                               child: Container(
@@ -117,8 +176,42 @@ class LoginState extends State<Login> {
                                           password: passwordController.text);
 
                                   Navigator.pushNamed(context, '/');
-                                } catch (e) {
-                                  print(e);
+                                } on FirebaseException catch (e) {
+                                  if (e.code == 'user-not-found') {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text("Error"),
+                                            content: Text('User not found'),
+                                            actions: [
+                                              TextButton(
+                                                child: Text("Ok"),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              )
+                                            ],
+                                          );
+                                        });
+                                  } else if (e.code == 'wrong-password') {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text("Error"),
+                                            content: Text('Wrong password'),
+                                            actions: [
+                                              TextButton(
+                                                child: Text("Ok"),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              )
+                                            ],
+                                          );
+                                        });
+                                  }
                                 }
                               },
                               child: Container(
