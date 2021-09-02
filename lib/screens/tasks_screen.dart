@@ -9,6 +9,7 @@ import 'package:quick_actions/quick_actions.dart';
 import 'package:toddyapp/components/add_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toddyapp/components/task_tile.dart';
+import 'package:toddyapp/components/user_modal_page.dart';
 import 'package:toddyapp/components/week_view.dart';
 import 'package:toddyapp/constants.dart';
 
@@ -89,7 +90,7 @@ class _TasksScreenState extends State<TasksScreen> {
                     GestureDetector(
                       onTap: () {
                         _auth.currentUser != null
-                            ? Navigator.pushNamed(context, 'User')
+                            ? userModalPage(context)
                             : Navigator.pushNamed(context, 'Login');
                       },
                       child: Container(
@@ -128,6 +129,13 @@ class _TasksScreenState extends State<TasksScreen> {
       )),
     );
   }
+
+  Future<dynamic> userModalPage(BuildContext context) =>
+      showCupertinoModalPopup(
+          context: context,
+          builder: (context) {
+            return NewUserPage();
+          });
 }
 
 class Taskbody extends StatefulWidget {
