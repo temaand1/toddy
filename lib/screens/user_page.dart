@@ -78,7 +78,10 @@ class UserPage extends StatelessWidget {
                           onPressed: () =>
                               Navigator.pushNamed(context, 'ExpireTasks'),
                           name: 'Expire tasks',
-                          icon: FaIcon(FontAwesomeIcons.tasks, color: Colors.white,)),
+                          icon: FaIcon(
+                            FontAwesomeIcons.tasks,
+                            color: Colors.white,
+                          )),
                       BigButton(
                           onPressed: () async {
                             await GoogleAuth().signOutFromGoogle();
@@ -91,15 +94,41 @@ class UserPage extends StatelessWidget {
                           )),
                       BigButton(
                           onPressed: () {
-                            _firestore
-                                .collection('$_userName')
-                                .get()
-                                .then((snapshot) {
-                              for (DocumentSnapshot ds in snapshot.docs) {
-                                ds.reference.delete();
-                              }
-                            });
-                            Navigator.pushNamed(context, '/');
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20.0))),
+                                    title: Text("Hey !"),
+                                    content: Text('Delete all your Todos ?'),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () =>
+                                              Navigator.of(context).pop(),
+                                          child: Text('No')),
+                                      TextButton(
+                                        child: Text(
+                                          "Ok",
+                                          style: TextStyle(color: kAccentColor),
+                                        ),
+                                        onPressed: () {
+                                          _firestore
+                                              .collection('$_userName')
+                                              .get()
+                                              .then((snapshot) {
+                                            for (DocumentSnapshot ds
+                                                in snapshot.docs) {
+                                              ds.reference.delete();
+                                            }
+                                          });
+                                          Navigator.pushNamed(context, '/');
+                                        },
+                                      )
+                                    ],
+                                  );
+                                });
                           },
                           name: 'Delete all Todo',
                           icon: FaIcon(

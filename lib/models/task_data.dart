@@ -11,6 +11,10 @@ class TaskData extends ChangeNotifier {
 
   String dayToShow = DateFormat.yMd().format(DateTime.now());
 
+  void setCurrentDay(String date) {
+    dayToShow = date;
+    notifyListeners();
+  }
 
   void currentDayUpdate(int day) {
     dayToShow =

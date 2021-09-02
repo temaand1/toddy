@@ -2,8 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:provider/provider.dart';
+import 'package:quick_actions/quick_actions.dart';
 import 'package:toddyapp/components/add_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toddyapp/components/task_tile.dart';
@@ -21,6 +23,28 @@ class _TasksScreenState extends State<TasksScreen> {
   String userEmail = FirebaseAuth.instance.currentUser!.email.toString();
   final _auth = FirebaseAuth.instance;
   String? profileImage = FirebaseAuth.instance.currentUser!.photoURL;
+
+  final quickAction = QuickActions();
+
+  @override
+  void initState() {
+    super.initState();
+
+    quickAction.setShortcutItems([
+      ShortcutItem(type: 'add', localizedTitle: 'Add task', icon: 'add'),
+      ShortcutItem(
+          type: 'expired', localizedTitle: 'Expire tasks', icon: 'Expired'),
+    ]);
+
+    quickAction.initialize((type) {
+      if (type == 'add') {
+        AddButton().createState().addTaskDialog(context, '',
+            DateFormat.yMd().format(DateTime.now()), DateTime.now());
+      } else if (type == 'expired') {
+        Navigator.pushNamed(context, 'ExpireTasks');
+      }
+    });
+  }
 
   logOut() async {
     await _auth.signOut();
