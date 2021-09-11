@@ -7,7 +7,7 @@ import 'package:toddyapp/screens/expire_task_screen.dart';
 import 'package:toddyapp/screens/login.dart';
 
 import 'package:toddyapp/screens/tasks_screen.dart';
-
+import 'package:toddyapp/screens/user_page.dart';
 import 'package:toddyapp/screens/welcome_screen.dart';
 
 void main() async {
@@ -30,6 +30,7 @@ class Toddy extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => WelcomeScreen(),
+          'User': (context) => UserPage(),
           'Login': (context) => Login(),
           'TaskScreen': (context) => TasksScreen(),
           'ExpireTasks': (context) => ExpireTasks(),
