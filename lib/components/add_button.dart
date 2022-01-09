@@ -1,15 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:date_field/date_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:date_field/date_field.dart';
-import 'package:provider/provider.dart';
-import 'package:toddyapp/models/task_data.dart';
-import '../constants.dart';
-import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 
+import '../constants.dart';
 import 'custom_iconpack.dart';
 
 class AddButton extends StatefulWidget {
@@ -38,14 +35,14 @@ class _AddButtonState extends State<AddButton> {
         constraints:
             BoxConstraints(maxHeight: 180, minWidth: 450, maxWidth: 720),
 
-        iconPackMode: IconPack.custom,
+        iconPackModes: [IconPack.custom],
         customIconPack: myIconPack,
         closeChild: Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
           height: 40,
           width: 100,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25), color: kAccentColor),
+              borderRadius: BorderRadius.circular(25), color: Theme.of(context).colorScheme.primary,)
           child: Center(
             child: Text(
               'Close',
@@ -72,7 +69,7 @@ class _AddButtonState extends State<AddButton> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton(
-        backgroundColor: kAccentColor,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () {
           addTaskDialog(context, newTaskTitle, taskDay, selectedDate);
         },
@@ -190,7 +187,7 @@ class ChooseIconButton extends StatelessWidget {
           height: 50,
           width: 150,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25), color: kAccentColor),
+              borderRadius: BorderRadius.circular(25), color: Theme.of(context).colorScheme.primary),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -221,7 +218,7 @@ class AddTaskButton extends StatelessWidget {
           height: 50,
           width: 150,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25), color: kAccentColor),
+              borderRadius: BorderRadius.circular(25), color: Theme.of(context).colorScheme.primary),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

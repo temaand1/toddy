@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:toddyapp/constants.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:toddyapp/models/task_data.dart';
 
 class WeekView extends StatefulWidget {
@@ -46,7 +45,7 @@ class WeekViewState extends State<WeekView> {
                                                 : Colors.grey
                                             : Colors.transparent),
                                 color: day == DateTime.now().day
-                                    ? kAccentColor
+                                    ? Theme.of(context).colorScheme.primary
                                     : Colors.grey.withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(5.0)),
                             child: Column(

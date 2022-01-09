@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:toddyapp/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -14,7 +13,6 @@ class LoginState extends State<Login> {
   final _auth = FirebaseAuth.instance;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -27,7 +25,7 @@ class LoginState extends State<Login> {
         backgroundColor: kMainBlue,
         appBar: AppBar(
           title: Text('Welcome'),
-          backgroundColor: kAccentColor,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           actions: [
             Hero(
               tag: 'icon',
@@ -64,7 +62,8 @@ class LoginState extends State<Login> {
                               keyboardType: TextInputType.emailAddress,
                               controller: emailController,
                               decoration: InputDecoration(
-                                  focusColor: kAccentColor,
+                                  focusColor:
+                                      Theme.of(context).colorScheme.primary,
                                   border: OutlineInputBorder(),
                                   labelText: 'Email'),
                             )),
@@ -176,7 +175,8 @@ class SingInButton extends StatelessWidget {
           width: 80,
           height: 40,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5), color: kAccentColor),
+              borderRadius: BorderRadius.circular(5),
+              color: Theme.of(context).colorScheme.primary),
           child: Center(
             child: Text(
               'LOGIN',
@@ -275,7 +275,8 @@ class RegisterButton extends StatelessWidget {
           width: 80,
           height: 40,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5), color: kAccentColor),
+              borderRadius: BorderRadius.circular(5),
+              color: Theme.of(context).colorScheme.primary),
           child: Center(
             child: Text(
               'REGISTER',

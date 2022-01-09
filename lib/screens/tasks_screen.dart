@@ -1,18 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'package:toddyapp/components/add_button.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toddyapp/components/task_tile.dart';
 import 'package:toddyapp/components/user_modal_page.dart';
 import 'package:toddyapp/components/week_view.dart';
 import 'package:toddyapp/constants.dart';
-
 import 'package:toddyapp/models/task_data.dart';
 
 class TasksScreen extends StatefulWidget {
@@ -53,81 +50,85 @@ class _TasksScreenState extends State<TasksScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: AddButton(),
-      backgroundColor: kMainBlue,
-      body: SafeArea(
-          child: Container(
-        padding: EdgeInsets.symmetric(vertical: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+    return ChangeNotifierProvider<TaskData>(
+        create: (BuildContext context) => TaskData(),
+        child: Scaffold(
+          floatingActionButton: AddButton(),
+          backgroundColor: kMainBlue,
+          body: SafeArea(
               child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.white),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Hero(
-                      tag: 'icon',
-                      child: Container(
-                        padding: EdgeInsets.all(3),
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.white),
-                        child: Image.asset(
-                          'assets/icon.png',
-                          width: 30,
-                          height: 30,
+            padding: EdgeInsets.symmetric(vertical: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.white),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Hero(
+                          tag: 'icon',
+                          child: Container(
+                            padding: EdgeInsets.all(3),
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: Colors.white),
+                            child: Image.asset(
+                              'assets/icon.png',
+                              width: 30,
+                              height: 30,
+                            ),
+                          ),
                         ),
-                      ),
+                        GestureDetector(
+                          onTap: () {
+                            _auth.currentUser != null
+                                ? userModalPage(context)
+                                : Navigator.pushNamed(context, 'Login');
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(3),
+                            child: CircleAvatar(
+                                radius: 20,
+                                backgroundColor: kMainBlue,
+                                child: Container(
+                                  width: 35,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(45),
+                                    child: (profileImage != null)
+                                        ? Image(
+                                            image: NetworkImage(_auth
+                                                .currentUser!.photoURL
+                                                .toString()),
+                                          )
+                                        : Icon(
+                                            Icons.person,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                          ),
+                                  ),
+                                )),
+                          ),
+                        ),
+                      ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        _auth.currentUser != null
-                            ? userModalPage(context)
-                            : Navigator.pushNamed(context, 'Login');
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(3),
-                        child: CircleAvatar(
-                            radius: 20,
-                            backgroundColor: kMainBlue,
-                            child: Container(
-                              width: 35,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50)),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(45),
-                                child: (profileImage != null)
-                                    ? Image(
-                                        image: NetworkImage(_auth
-                                            .currentUser!.photoURL
-                                            .toString()),
-                                      )
-                                    : Icon(
-                                        Icons.person,
-                                        color: kAccentColor,
-                                      ),
-                              ),
-                            )),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                WeekView(),
+                Expanded(child: Taskbody())
+              ],
             ),
-            WeekView(),
-            Expanded(child: Taskbody())
-          ],
-        ),
-      )),
-    );
+          )),
+        ));
   }
 
   Future<dynamic> userModalPage(BuildContext context) =>
@@ -233,7 +234,7 @@ class _TaskbodyState extends State<Taskbody> {
             } else
               return Center(
                   child: CircularProgressIndicator.adaptive(
-                backgroundColor: kAccentColor,
+                backgroundColor: Theme.of(context).colorScheme.primary,
               ));
           }),
     );

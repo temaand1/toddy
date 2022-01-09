@@ -25,7 +25,7 @@ class BigButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(25), color: kMainBlue),
           child: Center(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 icon,
                 Text(

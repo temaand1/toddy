@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:toddyapp/models/google_auth.dart';
 
-import '../constants.dart';
-
 class GoogleSingInButton extends StatelessWidget {
   const GoogleSingInButton({
     Key? key,
@@ -33,11 +31,12 @@ class GoogleSingInButton extends StatelessWidget {
               children: [
                 FaIcon(
                   FontAwesomeIcons.google,
-                  color: kAccentColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 Text(
                   'Sing In with Google',
-                  style: TextStyle(color: kAccentColor),
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.primary),
                 ),
               ],
             ),
