@@ -1,6 +1,6 @@
 part of 'theme_bloc.dart';
 
-abstract class ThemeEvent extends Equatable {
+abstract class ThemeEvent  {
   const ThemeEvent();
 
   @override
