@@ -1,15 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:date_field/date_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:date_field/date_field.dart';
-import 'package:provider/provider.dart';
-import 'package:toddyapp/models/task_data.dart';
-import '../constants.dart';
-import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 
+import '../constants.dart';
 import 'custom_iconpack.dart';
 
 class AddButton extends StatefulWidget {
@@ -38,7 +35,7 @@ class _AddButtonState extends State<AddButton> {
         constraints:
             BoxConstraints(maxHeight: 180, minWidth: 450, maxWidth: 720),
 
-        iconPackMode: IconPack.custom,
+        iconPackModes: [IconPack.custom],
         customIconPack: myIconPack,
         closeChild: Container(
           padding: EdgeInsets.symmetric(horizontal: 10),

@@ -2,9 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 import 'package:toddyapp/components/task_tile.dart';
-import 'package:toddyapp/models/task_data.dart';
 
 import '../constants.dart';
 
