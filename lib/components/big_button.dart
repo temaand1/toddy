@@ -30,7 +30,8 @@ class BigButton extends StatelessWidget {
                 icon,
                 Text(
                   name,
-                  style: TextStyle(color: kAccentColor),
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.primary),
                 ),
               ],
             ),

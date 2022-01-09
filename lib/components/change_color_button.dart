@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:toddyapp/global/theme/app_themes.dart';
+import 'package:toddyapp/global/theme/bloc/theme_bloc.dart';
 
 import '../constants.dart';
 
-class ChangeColorButton extends StatelessWidget {
+class ChangeColorButton extends StatefulWidget {
   const ChangeColorButton({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<ChangeColorButton> createState() => _ChangeColorButtonState();
+}
+
+class _ChangeColorButtonState extends State<ChangeColorButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,14 +34,32 @@ class ChangeColorButton extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: Icon(Icons.circle, color: Colors.blueAccent),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        context
+                            .read<ThemeBloc>()
+                            .add(ThemeChanged(theme: AppTheme.Blue));
+                      });
+                    },
                   ),
                   IconButton(
                       icon: Icon(Icons.circle, color: Colors.orange),
-                      onPressed: () {}),
+                      onPressed: () {
+                        setState(() {
+                          context
+                              .read<ThemeBloc>()
+                              .add(ThemeChanged(theme: AppTheme.Ogange));
+                        });
+                      }),
                   IconButton(
                       icon: Icon(Icons.circle, color: Colors.lightGreen),
-                      onPressed: () {})
+                      onPressed: () {
+                        setState(() {
+                          context
+                              .read<ThemeBloc>()
+                              .add(ThemeChanged(theme: AppTheme.Green));
+                        });
+                      })
                 ],
               )
             ],

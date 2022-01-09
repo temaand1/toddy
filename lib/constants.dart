@@ -5,7 +5,9 @@ var kMainPadding = EdgeInsets.symmetric(
 );
 
 Color kMainBlue = Colors.grey.shade800;
-const Color kAccentColor = Colors.orange;
+
+
+
 
 
 

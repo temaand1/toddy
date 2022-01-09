@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 // ignore: unused_import
 import 'package:provider/provider.dart';
 import 'package:toddyapp/constants.dart';
@@ -28,7 +27,6 @@ class _TaskTileState extends State<TaskTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      
       onLongPress: () => showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
@@ -47,7 +45,9 @@ class _TaskTileState extends State<TaskTile> {
       ),
       leading: Icon(
         IconData(widget.codePoint, fontFamily: 'MaterialIcons'),
-        color: widget.isChecked ? kMainBlue : kAccentColor,
+        color: widget.isChecked
+            ? kMainBlue
+            : Theme.of(context).colorScheme.primary,
       ),
       title: Text(
         widget.text,
@@ -55,7 +55,7 @@ class _TaskTileState extends State<TaskTile> {
             decoration: widget.isChecked ? TextDecoration.lineThrough : null),
       ),
       trailing: Checkbox(
-        activeColor: kAccentColor,
+        activeColor: Theme.of(context).colorScheme.primary,
         value: widget.isChecked,
         onChanged: widget.onTap,
       ),

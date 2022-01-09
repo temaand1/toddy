@@ -58,7 +58,7 @@ class _NewUserPageState extends State<NewUserPage> {
                                 )
                               : Icon(
                                   Icons.person,
-                                  color: kAccentColor,
+                                  color: Theme.of(context).colorScheme.primary,
                                 ),
                         ),
                       ),
@@ -124,7 +124,10 @@ class _NewUserPageState extends State<NewUserPage> {
                                   TextButton(
                                     child: Text(
                                       "Ok",
-                                      style: TextStyle(color: kAccentColor),
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary),
                                     ),
                                     onPressed: () {
                                       _firestore

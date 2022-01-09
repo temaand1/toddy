@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:toddyapp/components/google_singIn.dart';
 import 'package:toddyapp/screens/tasks_screen.dart';
-import '../constants.dart';
 
 class WelcomeScreen extends StatelessWidget {
   final currentUser = FirebaseAuth.instance.currentUser;
@@ -65,11 +64,12 @@ class SingInButton extends StatelessWidget {
               children: [
                 FaIcon(
                   FontAwesomeIcons.signInAlt,
-                  color: kAccentColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 Text(
                   'Sing In or Sing Up',
-                  style: TextStyle(color: kAccentColor),
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.primary),
                 ),
               ],
             ),

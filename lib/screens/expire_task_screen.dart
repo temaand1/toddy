@@ -75,7 +75,8 @@ class _ExpireTasksState extends State<ExpireTasks> {
                                     )
                                   : Icon(
                                       Icons.person,
-                                      color: kAccentColor,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
                                     ),
                             ),
                           )),
@@ -205,7 +206,7 @@ class _ExpireTaskbodyState extends State<ExpireTaskbody> {
             } else
               return Center(
                   child: CircularProgressIndicator.adaptive(
-                backgroundColor: kAccentColor,
+                backgroundColor: Theme.of(context).colorScheme.primary,
               ));
           }),
     );
