@@ -3,14 +3,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:toddyapp/components/change_color_button.dart';
 import 'package:toddyapp/components/user_page_buttton.dart';
 import 'package:toddyapp/models/google_auth.dart';
 
 import '../constants.dart';
 
-class NewUserPage extends StatelessWidget {
+class NewUserPage extends StatefulWidget {
   const NewUserPage({Key? key}) : super(key: key);
 
+  @override
+  State<NewUserPage> createState() => _NewUserPageState();
+}
+
+class _NewUserPageState extends State<NewUserPage> {
   @override
   Widget build(BuildContext context) {
     final _firestore = FirebaseFirestore.instance;
@@ -26,7 +32,8 @@ class NewUserPage extends StatelessWidget {
         ),
         margin: EdgeInsets.all(15),
         width: 400,
-        constraints: BoxConstraints(maxHeight: 582, minWidth: 400),
+        constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.7, minWidth: 400),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -79,6 +86,7 @@ class NewUserPage extends StatelessWidget {
             Container(
               child: Column(
                 children: [
+                  ChangeColorButton(),
                   BigButton(
                       onPressed: () =>
                           Navigator.pushNamed(context, 'ExpireTasks'),
@@ -135,7 +143,7 @@ class NewUserPage extends StatelessWidget {
                               );
                             });
                       },
-                      name: 'Delete all Todo',
+                      name: 'Delete all',
                       icon: FaIcon(
                         FontAwesomeIcons.eraser,
                         color: Colors.white,
