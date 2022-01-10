@@ -79,11 +79,7 @@ class _TasksScreenState extends State<TasksScreen> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
                                 color: Colors.white),
-                            child: Image.asset(
-                              'assets/icon.png',
-                              width: 30,
-                              height: 30,
-                            ),
+                            child: _getIcon(),
                           ),
                         ),
                         GestureDetector(
@@ -129,6 +125,28 @@ class _TasksScreenState extends State<TasksScreen> {
             ),
           )),
         ));
+  }
+
+  Image _getIcon() {
+    if (Theme.of(context).colorScheme.primary == Colors.blue) {
+      return Image.asset(
+        'assets/icon_blue.png',
+        width: 30,
+        height: 30,
+      );
+    } else if (Theme.of(context).colorScheme.primary == Colors.lightGreen) {
+      return Image.asset(
+        'assets/icon_green.png',
+        width: 30,
+        height: 30,
+      );
+    } else {
+      return Image.asset(
+        'assets/icon.png',
+        width: 30,
+        height: 30,
+      );
+    }
   }
 
   Future<dynamic> userModalPage(BuildContext context) =>
