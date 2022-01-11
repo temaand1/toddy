@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-
 class BigButton extends StatelessWidget {
   final onPressed;
   final String name;
@@ -15,27 +13,22 @@ class BigButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          width: 250,
-          height: 50,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25), color: kMainBlue),
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                icon,
-                Text(
-                  name,
-                  style:
-                      TextStyle(color: Theme.of(context).colorScheme.primary),
-                ),
-              ],
-            ),
-          )),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton.icon(
+        icon: icon,
+        onPressed: onPressed,
+        label: Text(
+          name,
+          style: TextStyle(color: Colors.white),
+        ),
+        style: ElevatedButton.styleFrom(
+            fixedSize: Size(250, 50),
+            primary: Theme.of(context).colorScheme.primary,
+            shape: const StadiumBorder(),
+            shadowColor: Theme.of(context).colorScheme.primaryVariant),
+      ),
     );
+  
   }
 }

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:toddyapp/global/theme/app_themes.dart';
 import 'package:toddyapp/global/theme/bloc/theme_bloc.dart';
-
-import '../constants.dart';
+import 'package:toddyapp/services/get_initial_theme.dart';
 
 class ChangeColorButton extends StatefulWidget {
   const ChangeColorButton({
@@ -24,18 +23,23 @@ class _ChangeColorButtonState extends State<ChangeColorButton> {
         width: 250,
         height: 50,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25), color: kMainBlue),
+            border: Border.all(
+                color: Theme.of(context).colorScheme.primary, width: 2),
+            borderRadius: BorderRadius.circular(25),
+            color: Colors.white),
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Icon(Icons.color_lens, color: Colors.white),
+              Icon(Icons.color_lens,
+                  color: Theme.of(context).colorScheme.primary),
               Row(
                 children: [
                   IconButton(
                     icon: Icon(Icons.circle, color: Colors.blueAccent),
                     onPressed: () {
                       setState(() {
+                        GetInitialTheme().setTheme(theme: 'AppTheme.Blue');
                         context
                             .read<ThemeBloc>()
                             .add(ThemeChanged(theme: AppTheme.Blue));
@@ -46,6 +50,7 @@ class _ChangeColorButtonState extends State<ChangeColorButton> {
                       icon: Icon(Icons.circle, color: Colors.orange),
                       onPressed: () {
                         setState(() {
+                          GetInitialTheme().setTheme(theme: 'AppTheme.Orange');
                           context
                               .read<ThemeBloc>()
                               .add(ThemeChanged(theme: AppTheme.Ogange));
@@ -55,6 +60,7 @@ class _ChangeColorButtonState extends State<ChangeColorButton> {
                       icon: Icon(Icons.circle, color: Colors.lightGreen),
                       onPressed: () {
                         setState(() {
+                          GetInitialTheme().setTheme(theme: 'AppTheme.Green');
                           context
                               .read<ThemeBloc>()
                               .add(ThemeChanged(theme: AppTheme.Green));

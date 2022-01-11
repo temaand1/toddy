@@ -9,7 +9,7 @@ class GoogleSingInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return MaterialButton(
       onPressed: () async {
         try {
           // ignore: unused_local_variable

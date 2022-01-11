@@ -5,6 +5,5 @@ class ThemeState  {
 
   const ThemeState(this.themeData);
 
-  @override
-  List<Object> get props => [];
+  
 }

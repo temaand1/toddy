@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toddyapp/components/change_color_button.dart';
-import 'package:toddyapp/components/user_page_buttton.dart';
 import 'package:toddyapp/models/google_auth.dart';
 
-import '../constants.dart';
+import 'big_button.dart';
 
 class NewUserPage extends StatefulWidget {
   const NewUserPage({Key? key}) : super(key: key);
@@ -44,7 +43,7 @@ class _NewUserPageState extends State<NewUserPage> {
                     tag: 'person',
                     child: CircleAvatar(
                       radius: 40,
-                      backgroundColor: kMainBlue,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
                       child: Container(
                         width: 70,
                         decoration: BoxDecoration(
@@ -58,7 +57,7 @@ class _NewUserPageState extends State<NewUserPage> {
                                 )
                               : Icon(
                                   Icons.person,
-                                  color: Theme.of(context).colorScheme.primary,
+                                  color: Colors.white,
                                 ),
                         ),
                       ),
@@ -71,7 +70,7 @@ class _NewUserPageState extends State<NewUserPage> {
                     height: 50,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: kMainBlue),
+                        color: Theme.of(context).colorScheme.primary),
                     child: Center(
                       child: Text(
                         _userName,

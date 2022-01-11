@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:toddyapp/components/google_singIn.dart';
 import 'package:toddyapp/screens/tasks_screen.dart';
+import 'package:toddyapp/services/get_icon.dart';
 
 class WelcomeScreen extends StatelessWidget {
   final currentUser = FirebaseAuth.instance.currentUser;
@@ -14,43 +15,86 @@ class WelcomeScreen extends StatelessWidget {
     }
     return SafeArea(
         child: Container(
-      color: Colors.black,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      color: Theme.of(context).colorScheme.primary,
+      child: Stack(
+        alignment: AlignmentDirectional.topCenter,
         children: [
-          Hero(
-            tag: 'icon',
-            child: Container(
-              margin: EdgeInsets.only(bottom: 50),
-              padding: EdgeInsets.all(10),
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50), color: Colors.white),
-              child: Image.asset(
-                'assets/icon.png',
-                width: 30,
-                height: 30,
-              ),
-            ),
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.black,
+                border: Border.all(
+                    width: 0,
+                    color: Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withOpacity(0.7))),
+            height: MediaQuery.of(context).size.height * 0.3,
           ),
-          SingInButton(),
-          SizedBox(
-            height: 10,
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  Theme.of(context).colorScheme.primary.withOpacity(0.7),
+                  Theme.of(context).colorScheme.primary,
+                ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+                border: Border.all(
+                  width: 0,
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+                ),
+                borderRadius:
+                    BorderRadius.only(bottomRight: Radius.circular(75))),
+            height: MediaQuery.of(context).size.height * 0.3,
           ),
-          GoogleSingInButton()
+          Container(
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.2,
+                  left: MediaQuery.of(context).size.width * 0.7),
+              child: getIcon(context, size: 60.0)),
+          Container(
+            child: SingInAndSingUpButtons(),
+            margin:
+                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
+            decoration: BoxDecoration(
+                border: Border.all(
+                  width: 0,
+                ),
+                color: Colors.black,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(75))),
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.7,
+          )
         ],
       ),
     ));
   }
 }
 
-class SingInButton extends StatelessWidget {
-  const SingInButton({Key? key}) : super(key: key);
+class SingInAndSingUpButtons extends StatelessWidget {
+  const SingInAndSingUpButtons({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SingInAndSingUpButton(),
+        SizedBox(
+          height: 20,
+        ),
+        GoogleSingInButton()
+      ],
+    );
+  }
+}
+
+class SingInAndSingUpButton extends StatelessWidget {
+  const SingInAndSingUpButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
       onPressed: () => Navigator.pushNamed(context, 'Login'),
       child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10),

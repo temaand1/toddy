@@ -6,7 +6,7 @@ final appThemeData = {
   AppTheme.Blue: ThemeData(
       colorScheme: ColorScheme.fromSwatch(
     accentColor: Colors.blue[400],
-    primarySwatch: Colors.blue,
+    primarySwatch: Colors.lightBlue,
   )),
   AppTheme.Ogange: ThemeData(
       colorScheme: ColorScheme.fromSwatch(

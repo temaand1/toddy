@@ -11,6 +11,7 @@ import 'package:toddyapp/components/user_modal_page.dart';
 import 'package:toddyapp/components/week_view.dart';
 import 'package:toddyapp/constants.dart';
 import 'package:toddyapp/models/task_data.dart';
+import 'package:toddyapp/services/get_icon.dart';
 
 class TasksScreen extends StatefulWidget {
   @override
@@ -79,7 +80,7 @@ class _TasksScreenState extends State<TasksScreen> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
                                 color: Colors.white),
-                            child: _getIcon(),
+                            child: getIcon(context),
                           ),
                         ),
                         GestureDetector(
@@ -92,7 +93,8 @@ class _TasksScreenState extends State<TasksScreen> {
                             padding: EdgeInsets.all(3),
                             child: CircleAvatar(
                                 radius: 20,
-                                backgroundColor: kMainBlue,
+                                backgroundColor:
+                                    Theme.of(context).colorScheme.primary,
                                 child: Container(
                                   width: 35,
                                   decoration: BoxDecoration(
@@ -107,9 +109,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                           )
                                         : Icon(
                                             Icons.person,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .primary,
+                                            color: Colors.white,
                                           ),
                                   ),
                                 )),
@@ -125,28 +125,6 @@ class _TasksScreenState extends State<TasksScreen> {
             ),
           )),
         ));
-  }
-
-  Image _getIcon() {
-    if (Theme.of(context).colorScheme.primary == Colors.blue) {
-      return Image.asset(
-        'assets/icon_blue.png',
-        width: 30,
-        height: 30,
-      );
-    } else if (Theme.of(context).colorScheme.primary == Colors.lightGreen) {
-      return Image.asset(
-        'assets/icon_green.png',
-        width: 30,
-        height: 30,
-      );
-    } else {
-      return Image.asset(
-        'assets/icon.png',
-        width: 30,
-        height: 30,
-      );
-    }
   }
 
   Future<dynamic> userModalPage(BuildContext context) =>

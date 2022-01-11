@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:toddyapp/constants.dart';
+import 'package:toddyapp/services/get_icon.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -24,17 +25,14 @@ class LoginState extends State<Login> {
     return Scaffold(
         backgroundColor: kMainBlue,
         appBar: AppBar(
-          title: Text('Welcome'),
-          backgroundColor: Theme.of(context).colorScheme.primary,
+          iconTheme: IconThemeData(color: Colors.white),
+          title: Text(
+            'Welcome',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: kMainBlue,
           actions: [
-            Hero(
-              tag: 'icon',
-              child: Image.asset(
-                'assets/icon.png',
-                width: 100,
-                height: 100,
-              ),
-            ),
+            Hero(tag: 'icon', child: getIcon(context, size: 100.0)),
           ],
         ),
         body: Padding(
