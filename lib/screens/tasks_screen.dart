@@ -32,7 +32,7 @@ class _TasksScreenState extends State<TasksScreen> {
     quickAction.setShortcutItems([
       ShortcutItem(type: 'add', localizedTitle: 'Add task', icon: 'add'),
       ShortcutItem(
-          type: 'expired', localizedTitle: 'Expire tasks', icon: 'Expired'),
+          type: 'expired', localizedTitle: 'Expire tasks', icon: 'expired'),
     ]);
 
     quickAction.initialize((type) {
