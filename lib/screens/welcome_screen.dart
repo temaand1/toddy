@@ -101,7 +101,7 @@ class SingInAndSingUpButton extends StatelessWidget {
           width: 250,
           height: 50,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25), color: Colors.white),
+              borderRadius: BorderRadius.circular(25), color: Theme.of(context).backgroundColor),
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

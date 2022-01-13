@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:toddyapp/components/task_tile.dart';
 
-import '../constants.dart';
 
 class ExpireTasks extends StatefulWidget {
   const ExpireTasks({Key? key}) : super(key: key);
@@ -24,14 +23,14 @@ class _ExpireTasksState extends State<ExpireTasks> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: kMainBlue,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Column(
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             child: Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15), color: Colors.white),
+                  borderRadius: BorderRadius.circular(15), color: Theme.of(context).backgroundColor),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -43,7 +42,7 @@ class _ExpireTasksState extends State<ExpireTasks> {
                       height: 50,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: Colors.white),
+                          color: Theme.of(context).backgroundColor),
                       child: IconButton(
                         icon: Icon(Icons.arrow_back),
                         onPressed: () => Navigator.pop(context),
@@ -60,7 +59,7 @@ class _ExpireTasksState extends State<ExpireTasks> {
                       padding: EdgeInsets.all(3),
                       child: CircleAvatar(
                           radius: 20,
-                          backgroundColor: kMainBlue,
+                          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                           child: Container(
                             width: 35,
                             decoration: BoxDecoration(
@@ -122,7 +121,7 @@ class _ExpireTaskbodyState extends State<ExpireTaskbody> {
       margin: EdgeInsets.symmetric(horizontal: 15),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         borderRadius: BorderRadius.all(Radius.circular(25)),
       ),
       child: StreamBuilder(

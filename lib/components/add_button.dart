@@ -46,7 +46,9 @@ class _AddButtonState extends State<AddButton> {
           child: Center(
             child: Text(
               'Close',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).backgroundColor
+
+              ),
             ),
           ),
         ));
@@ -96,7 +98,7 @@ class _AddButtonState extends State<AddButton> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
-                    color: Colors.white),
+                    color: Theme.of(context).backgroundColor),
                 child: Padding(
                   padding: kMainPadding,
                   child: Column(
@@ -105,7 +107,7 @@ class _AddButtonState extends State<AddButton> {
                         padding: EdgeInsets.symmetric(vertical: 20),
                         child: Text(
                           'Add Task',
-                          style: TextStyle(fontSize: 26, color: kMainBlue),
+                          style: TextStyle(fontSize: 26, color: Theme.of(context).scaffoldBackgroundColor),
                         ),
                       ),
                       TextField(
@@ -121,7 +123,7 @@ class _AddButtonState extends State<AddButton> {
                         margin: EdgeInsets.symmetric(vertical: 15),
                         child: DateTimeField(
                           decoration: InputDecoration(
-                            fillColor: kMainBlue,
+                            fillColor: Theme.of(context).scaffoldBackgroundColor,
                             border: OutlineInputBorder(),
                             suffixIcon: Icon(Icons.event_note),
                           ),
@@ -193,11 +195,11 @@ class ChooseIconButton extends StatelessWidget {
             children: [
               FaIcon(
                 FontAwesomeIcons.icons,
-                color: Colors.white,
+                color: Theme.of(context).backgroundColor,
               ),
               Text(
                 ' Choose Icon',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Theme.of(context).backgroundColor),
               )
             ],
           ),
@@ -224,11 +226,11 @@ class AddTaskButton extends StatelessWidget {
             children: [
               Text(
                 'Add Task',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Theme.of(context).backgroundColor),
               ),
               FaIcon(
                 FontAwesomeIcons.plusCircle,
-                color: Colors.white,
+                color: Theme.of(context).backgroundColor,
               ),
             ],
           ),

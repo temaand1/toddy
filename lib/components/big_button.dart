@@ -20,7 +20,7 @@ class BigButton extends StatelessWidget {
         onPressed: onPressed,
         label: Text(
           name,
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Theme.of(context).backgroundColor),
         ),
         style: ElevatedButton.styleFrom(
             fixedSize: Size(250, 50),

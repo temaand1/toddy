@@ -22,19 +22,19 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addTask(String newTaskTitle) {
-    final task = Task(name: newTaskTitle);
-    tasks.add(task);
-    notifyListeners();
-  }
+  // void addTask(String newTaskTitle) {
+  //   final task = Task(name: newTaskTitle);
+  //   tasks.add(task);
+  //   notifyListeners();
+  // }
 
-  void removeTask(Task task) {
-    tasks.remove(task);
-    notifyListeners();
-  }
+  // void removeTask(Task task) {
+  //   tasks.remove(task);
+  //   notifyListeners();
+  // }
 
-  void updateTask(Task task) {
-    task.toggleDone();
-    notifyListeners();
-  }
+  // void updateTask(Task task) {
+  //   task.toggleDone();
+  //   notifyListeners();
+  // }
 }

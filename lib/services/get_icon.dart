@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Image getIcon(BuildContext context, {size}) {
-  if (Theme.of(context).colorScheme.primary == Colors.lightBlue) {
+  if (Theme.of(context).colorScheme.primary == Colors.cyan) {
     return Image.asset(
       'assets/icon_blue.png',
       width: size ?? 30,

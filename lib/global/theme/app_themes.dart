@@ -4,18 +4,24 @@ enum AppTheme { Blue, Ogange, Green }
 
 final appThemeData = {
   AppTheme.Blue: ThemeData(
+      textTheme: TextTheme(bodyText1: TextStyle(color: Colors.white)),
+      scaffoldBackgroundColor: Colors.grey.shade800,
+      backgroundColor: Colors.white,
       colorScheme: ColorScheme.fromSwatch(
-    accentColor: Colors.blue[400],
-    primarySwatch: Colors.lightBlue,
-  )),
+        primarySwatch: Colors.cyan,
+      )),
   AppTheme.Ogange: ThemeData(
+      scaffoldBackgroundColor: Colors.grey.shade800,
+      backgroundColor: Colors.white,
       colorScheme: ColorScheme.fromSwatch(
-    accentColor: Colors.orange[300],
-    primarySwatch: Colors.orange,
-  )),
+        accentColor: Colors.grey.shade800,
+        primarySwatch: Colors.orange,
+      )),
   AppTheme.Green: ThemeData(
+      scaffoldBackgroundColor: Colors.grey.shade800,
+      backgroundColor: Colors.white,
       colorScheme: ColorScheme.fromSwatch(
-    accentColor: Colors.lightGreen[400],
-    primarySwatch: Colors.lightGreen,
-  ))
+        accentColor: Colors.grey.shade800,
+        primarySwatch: Colors.lightGreen,
+      ))
 };

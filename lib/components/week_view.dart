@@ -18,7 +18,7 @@ class WeekViewState extends State<WeekView> {
       child: Container(
           height: 90,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.all(Radius.circular(15)),
           ),
           padding: EdgeInsets.all(15),
@@ -42,7 +42,9 @@ class WeekViewState extends State<WeekView> {
                                         : selected == day
                                             ? selected == DateTime.now().day
                                                 ? Colors.transparent
-                                                : Colors.grey
+                                                : Theme.of(context)
+                                                    .colorScheme
+                                                    .primary
                                             : Colors.transparent),
                                 color: day == DateTime.now().day
                                     ? Theme.of(context).colorScheme.primary
@@ -62,7 +64,10 @@ class WeekViewState extends State<WeekView> {
                                             ? FontWeight.bold
                                             : FontWeight.normal,
                                         color: day == DateTime.now().day
-                                            ? Colors.white
+                                            ? Theme.of(context)
+                                                .textTheme
+                                                .bodyText1!
+                                                .color
                                             : Colors.grey[500],
                                       )),
                                   Text(
@@ -70,8 +75,11 @@ class WeekViewState extends State<WeekView> {
                                         .add(Duration(days: position))),
                                     style: TextStyle(
                                         color: day == DateTime.now().day
-                                            ? Colors.white
-                                            : Colors.grey[700],
+                                            ? Theme.of(context)
+                                                .textTheme
+                                                .bodyText1!
+                                                .color
+                                            : Colors.black87,
                                         fontWeight: day == DateTime.now().day
                                             ? FontWeight.bold
                                             : FontWeight.normal),

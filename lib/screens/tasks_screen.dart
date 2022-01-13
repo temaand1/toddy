@@ -9,7 +9,6 @@ import 'package:toddyapp/components/add_button.dart';
 import 'package:toddyapp/components/task_tile.dart';
 import 'package:toddyapp/components/user_modal_page.dart';
 import 'package:toddyapp/components/week_view.dart';
-import 'package:toddyapp/constants.dart';
 import 'package:toddyapp/models/task_data.dart';
 import 'package:toddyapp/services/get_icon.dart';
 
@@ -55,7 +54,7 @@ class _TasksScreenState extends State<TasksScreen> {
         create: (BuildContext context) => TaskData(),
         child: Scaffold(
           floatingActionButton: AddButton(),
-          backgroundColor: kMainBlue,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: SafeArea(
               child: Container(
             padding: EdgeInsets.symmetric(vertical: 15),
@@ -67,7 +66,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Colors.white),
+                        color: Theme.of(context).backgroundColor),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -79,7 +78,7 @@ class _TasksScreenState extends State<TasksScreen> {
                             height: 50,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(50),
-                                color: Colors.white),
+                                color: Theme.of(context).backgroundColor),
                             child: getIcon(context),
                           ),
                         ),
@@ -109,7 +108,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                           )
                                         : Icon(
                                             Icons.person,
-                                            color: Colors.white,
+                                            color: Theme.of(context).backgroundColor,
                                           ),
                                   ),
                                 )),
@@ -158,7 +157,7 @@ class _TaskbodyState extends State<Taskbody> {
       margin: EdgeInsets.symmetric(horizontal: 15),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         borderRadius: BorderRadius.all(Radius.circular(25)),
       ),
       child: StreamBuilder(

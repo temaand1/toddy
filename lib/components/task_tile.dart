@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:provider/provider.dart';
-import 'package:toddyapp/constants.dart';
 
 class TaskTile extends StatefulWidget {
   final bool isChecked;
@@ -46,7 +45,7 @@ class _TaskTileState extends State<TaskTile> {
       leading: Icon(
         IconData(widget.codePoint, fontFamily: 'MaterialIcons'),
         color: widget.isChecked
-            ? kMainBlue
+            ? Theme.of(context).scaffoldBackgroundColor
             : Theme.of(context).colorScheme.primary,
       ),
       title: Text(

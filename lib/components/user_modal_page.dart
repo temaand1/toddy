@@ -27,12 +27,13 @@ class _NewUserPageState extends State<NewUserPage> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
-          color: Colors.white,
+          color: Theme.of(context).backgroundColor,
         ),
         margin: EdgeInsets.all(15),
         width: 400,
         constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.7, minWidth: 400),
+            maxHeight: MediaQuery.of(context).size.height * 0.72,
+            minWidth: 400),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -57,7 +58,7 @@ class _NewUserPageState extends State<NewUserPage> {
                                 )
                               : Icon(
                                   Icons.person,
-                                  color: Colors.white,
+                                  color: Theme.of(context).backgroundColor,
                                 ),
                         ),
                       ),
@@ -75,7 +76,8 @@ class _NewUserPageState extends State<NewUserPage> {
                       child: Text(
                         _userName,
                         style: GoogleFonts.roboto(
-                            fontSize: 20, color: Colors.white),
+                            fontSize: 20,
+                            color: Theme.of(context).backgroundColor),
                       ),
                     ),
                   ),
@@ -92,7 +94,7 @@ class _NewUserPageState extends State<NewUserPage> {
                       name: 'Expire tasks',
                       icon: FaIcon(
                         FontAwesomeIcons.tasks,
-                        color: Colors.white,
+                        color: Theme.of(context).backgroundColor,
                       )),
                   BigButton(
                       onPressed: () async {
@@ -102,7 +104,7 @@ class _NewUserPageState extends State<NewUserPage> {
                       name: 'Sing Out',
                       icon: FaIcon(
                         FontAwesomeIcons.signOutAlt,
-                        color: Colors.white,
+                        color: Theme.of(context).backgroundColor,
                       )),
                   BigButton(
                       onPressed: () {
@@ -148,7 +150,7 @@ class _NewUserPageState extends State<NewUserPage> {
                       name: 'Delete all',
                       icon: FaIcon(
                         FontAwesomeIcons.eraser,
-                        color: Colors.white,
+                        color: Theme.of(context).backgroundColor,
                       ))
                 ],
               ),

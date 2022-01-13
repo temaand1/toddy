@@ -9,7 +9,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          color: kMainBlue,
+          color: Theme.of(context).scaffoldBackgroundColor,
           child: Column(
             children: [
               Container(
@@ -22,12 +22,12 @@ class SettingsPage extends StatelessWidget {
                           Navigator.pop(context);
                         },
                         icon: Icon(Icons.arrow_back_ios_outlined,
-                            color: Colors.white),
+                            color: Theme.of(context).backgroundColor),
                       ),
                       Text(
                         'Settings',
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Theme.of(context).backgroundColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 30),
                       ),
@@ -38,11 +38,11 @@ class SettingsPage extends StatelessWidget {
                           height: 50,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: Colors.white),
+                              color: Theme.of(context).backgroundColor),
                           child: Icon(
                             Icons.person_sharp,
                             size: 38,
-                            color: kMainBlue,
+                            color: Theme.of(context).scaffoldBackgroundColor,
                           ),
                         ),
                       )
@@ -53,7 +53,7 @@ class SettingsPage extends StatelessWidget {
                 margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).backgroundColor,
                     borderRadius: BorderRadius.all(Radius.circular(30))),
                 child: SettingsBody(),
               ))
@@ -96,7 +96,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(30),
                                 topRight: Radius.circular(30)),
-                            color: Colors.white),
+                            color: Theme.of(context).backgroundColor),
                         child: Padding(
                           padding: kMainPadding,
                           child: Column(
@@ -106,7 +106,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                                 child: Text(
                                   'Choose your color!',
                                   style:
-                                      TextStyle(fontSize: 26, color: kMainBlue),
+                                      TextStyle(fontSize: 26, color: Theme.of(context).scaffoldBackgroundColor),
                                 ),
                               ),
                               Container(
@@ -117,7 +117,7 @@ class _SettingsBodyState extends State<SettingsBody> {
                                       IconButton(
                                           icon: Icon(
                                             Icons.color_lens,
-                                            color: kMainBlue,
+                                            color: Theme.of(context).scaffoldBackgroundColor,
                                           ),
                                           onPressed: () {}),
                                     ],
@@ -157,13 +157,13 @@ class SettingsBodyButton extends StatelessWidget {
           onTap: onTap(),
           leading: Icon(
             icon,
-            color: Colors.white,
+            color: Theme.of(context).backgroundColor,
           ),
-          tileColor: kMainBlue,
+          tileColor: Theme.of(context).scaffoldBackgroundColor,
           title: Text(
             title,
             style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+                color: Theme.of(context).backgroundColor, fontWeight: FontWeight.bold, fontSize: 20),
           ),
         ),
       ),

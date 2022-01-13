@@ -1,4 +1,3 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,8 +8,6 @@ import 'package:toddyapp/screens/login.dart';
 import 'package:toddyapp/screens/tasks_screen.dart';
 import 'package:toddyapp/screens/welcome_screen.dart';
 import 'package:toddyapp/services/get_initial_theme.dart';
-
-
 
 import 'global/theme/bloc/theme_bloc.dart';
 
@@ -27,7 +24,7 @@ class Toddy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppTheme themeData = getInittheme(initTheme);
- 
+
     return BlocProvider(
       create: (context) => ThemeBloc(themeData),
       child: BlocBuilder<ThemeBloc, ThemeState>(
@@ -39,6 +36,16 @@ class Toddy extends StatelessWidget {
   Widget _buildWithBLoc(BuildContext context, ThemeState state) {
     return MaterialApp(
       theme: state.themeData,
+      themeMode: ThemeMode.system,
+      darkTheme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Colors.black,
+        
+        textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black)),
+        colorScheme: state.themeData!.colorScheme
+
+            
+        
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {

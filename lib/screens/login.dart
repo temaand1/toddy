@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:toddyapp/constants.dart';
@@ -23,14 +25,14 @@ class LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kMainBlue,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: IconThemeData(color: Theme.of(context).backgroundColor),
           title: Text(
             'Welcome',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Theme.of(context).backgroundColor),
           ),
-          backgroundColor: kMainBlue,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           actions: [
             Hero(tag: 'icon', child: getIcon(context, size: 100.0)),
           ],
@@ -45,7 +47,7 @@ class LoginState extends State<Login> {
                     height: 236,
                     padding: EdgeInsets.all(15),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).backgroundColor,
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     child: Column(
@@ -178,7 +180,7 @@ class SingInButton extends StatelessWidget {
           child: Center(
             child: Text(
               'LOGIN',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).backgroundColor),
             ),
           )),
     );
@@ -278,7 +280,7 @@ class RegisterButton extends StatelessWidget {
           child: Center(
             child: Text(
               'REGISTER',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).backgroundColor),
             ),
           )),
     );

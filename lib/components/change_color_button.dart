@@ -26,7 +26,7 @@ class _ChangeColorButtonState extends State<ChangeColorButton> {
             border: Border.all(
                 color: Theme.of(context).colorScheme.primary, width: 2),
             borderRadius: BorderRadius.circular(25),
-            color: Colors.white),
+            color: Theme.of(context).backgroundColor),
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
