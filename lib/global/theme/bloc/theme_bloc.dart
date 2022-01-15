@@ -9,7 +9,7 @@ part 'theme_state.dart';
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   ThemeBloc(AppTheme initTheme) : super(ThemeState(appThemeData[initTheme])) {
     on<ThemeChanged>((event, emit) async {
-       final prefs = await SharedPreferences.getInstance();
+      final prefs = await SharedPreferences.getInstance();
       if (event.theme == AppTheme.Blue) {
         prefs.setString('themeNumber', 'AppTheme.Blue');
       } else if (event.theme == AppTheme.Green) {
@@ -17,13 +17,8 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       } else {
         prefs.setString('themeNumber', 'AppTheme.Ogange');
       }
-     
-      
-      emit(
-        
-        ThemeState(appThemeData[event.theme])
-      
-      );
+
+      emit(ThemeState(appThemeData[event.theme]));
     });
   }
 }

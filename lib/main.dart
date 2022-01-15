@@ -38,14 +38,9 @@ class Toddy extends StatelessWidget {
       theme: state.themeData,
       themeMode: ThemeMode.system,
       darkTheme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Colors.black,
-        
-        textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black)),
-        colorScheme: state.themeData!.colorScheme
-
-            
-        
-      ),
+          scaffoldBackgroundColor: Colors.black,
+          textTheme: TextTheme(bodyText1: TextStyle(color: Colors.black)),
+          colorScheme: state.themeData!.colorScheme),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
