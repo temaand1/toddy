@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_field/date_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -74,6 +75,7 @@ class _AddButtonState extends State<AddButton> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () {
           addTaskDialog(context, newTaskTitle, taskDay, selectedDate);
+          HapticFeedback.mediumImpact();
         },
         child: Icon(Icons.add),
       ),
@@ -141,10 +143,15 @@ class _AddButtonState extends State<AddButton> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             ChooseIconButton(
-                              onPressed: () => _pickIcon(),
+                              onPressed: () {
+                                HapticFeedback.lightImpact();
+                                return _pickIcon();
+                              },
                             ),
                             AddTaskButton(
                               onPressed: () {
+                                HapticFeedback.lightImpact();
+
                                 setState(() {
                                   _firestore
                                       .collection('$loggedUser')

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:toddyapp/services/get_icon.dart';
 
 import 'user_modal_page.dart';
@@ -42,6 +43,8 @@ class TopBar extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
+                                        HapticFeedback.lightImpact();
+
                 auth.currentUser != null
                     ? userModalPage(context)
                     : Navigator.pushNamed(context, 'Login');

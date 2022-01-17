@@ -75,6 +75,8 @@ class _NewUserPageState extends State<NewUserPage> {
                     child: Center(
                       child: Text(
                         _userName,
+                        // TODO: Test email overflow
+                        overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.roboto(
                             fontSize: 20,
                             color: Theme.of(context).backgroundColor),

@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:toddyapp/components/task_tile.dart';
 import 'package:toddyapp/models/task_data.dart';
@@ -54,6 +55,8 @@ class _TaskBodyState extends State<TaskBody> {
                             text: streamSnapshot.data!.docs[index]['taskName'],
                             isChecked: streamSnapshot.data!.docs[index]['isDone'],
                             onTap: (bool? newValue) {
+                                                            HapticFeedback.lightImpact();
+
                               String currentTaskName =
                                   streamSnapshot.data!.docs[index]['taskName'];
     
@@ -78,6 +81,8 @@ class _TaskBodyState extends State<TaskBody> {
                               });
                             },
                             onLongTap: () {
+                                                            HapticFeedback.selectionClick();
+
                               String currentTaskName =
                                   streamSnapshot.data!.docs[index]['taskName'];
     

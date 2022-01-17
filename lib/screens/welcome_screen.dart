@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:toddyapp/components/google_singIn.dart';
 import 'package:toddyapp/screens/tasks_screen.dart';
@@ -95,13 +96,17 @@ class SingInAndSingUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () => Navigator.pushNamed(context, 'Login'),
+      onPressed: () {
+        HapticFeedback.lightImpact();
+        Navigator.pushNamed(context, 'Login');
+      },
       child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
           width: 250,
           height: 50,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25), color: Theme.of(context).backgroundColor),
+              borderRadius: BorderRadius.circular(25),
+              color: Theme.of(context).backgroundColor),
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:toddyapp/models/google_auth.dart';
 
@@ -11,6 +12,8 @@ class GoogleSingInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () async {
+                                HapticFeedback.lightImpact();
+
         try {
           // ignore: unused_local_variable
           await GoogleAuth().signInwithGoogle();

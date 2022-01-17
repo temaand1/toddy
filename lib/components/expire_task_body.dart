@@ -1,7 +1,7 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:toddyapp/components/task_tile.dart';
 
@@ -63,11 +63,12 @@ class _ExpireTaskbodyState extends State<ExpireTaskbody> {
                         child: TaskTile(
                             codePoint: streamSnapshot.data!.docs[index]['icon'],
                             text: streamSnapshot.data!.docs[index]['taskName'],
-                            isChecked: streamSnapshot.data!.docs[index]['isDone'],
+                            isChecked: streamSnapshot.data!.docs[index]
+                                ['isDone'],
                             onTap: (bool? newValue) {
                               String currentTaskName =
                                   streamSnapshot.data!.docs[index]['taskName'];
-    
+
                               void updateValue() async {
                                 final currentTask = _firestore
                                     .collection('$userEmail')
@@ -83,22 +84,23 @@ class _ExpireTaskbodyState extends State<ExpireTaskbody> {
                                       ['icon'],
                                 });
                               }
-    
+
                               setState(() {
                                 updateValue();
                               });
                             },
                             onLongTap: () {
+                              HapticFeedback.selectionClick();
                               String currentTaskName =
                                   streamSnapshot.data!.docs[index]['taskName'];
-    
+
                               void updateValue() async {
                                 final currentTask = _firestore
                                     .collection('$userEmail')
                                     .doc("$currentTaskName");
                                 return await currentTask.delete();
                               }
-    
+
                               setState(() {
                                 updateValue();
                                 Navigator.pop(context);
