@@ -1,13 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_actions/quick_actions.dart';
 import 'package:toddyapp/components/add_button.dart';
+import 'package:toddyapp/components/task_body.dart';
 import 'package:toddyapp/components/task_screen_top_bar.dart';
 import 'package:toddyapp/components/week_view.dart';
-import 'package:toddyapp/models/task_data.dart';
-import 'package:toddyapp/components/task_body.dart';
+import 'package:toddyapp/global/blocs/task_day_bloc/bloc/selected_day_bloc.dart';
 
 class TasksScreen extends StatefulWidget {
   @override
@@ -15,9 +14,7 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-  
-
-final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
   final quickAction = QuickActions();
 
   @override
@@ -32,37 +29,37 @@ final _auth = FirebaseAuth.instance;
 
     quickAction.initialize((type) {
       if (type == 'add') {
-        AddButton().createState().addTaskDialog(context, '',
-            DateFormat.yMd().format(DateTime.now()), DateTime.now());
+        AddButton().createState().addTaskDialog(context);
       } else if (type == 'expired') {
         Navigator.pushNamed(context, 'ExpireTasks');
       }
     });
   }
 
-  // logOut() async {
-  //   await _auth.signOut();
-  // }
+  
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<TaskData>(
-        create: (BuildContext context) => TaskData(),
-        child: Scaffold(
-          floatingActionButton: AddButton(),
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          body: SafeArea(
-              child: Container(
-            padding: EdgeInsets.symmetric(vertical: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TopBar(auth: _auth),
-                WeekView(),
-                TaskBody(),
-              ],
-            ),
-          )),
-        ));
+    
+
+    return BlocBuilder<SelectedDayBloc, DateTime>(
+        builder: (context, selectDayState) {
+      return Scaffold(
+        floatingActionButton: AddButton(),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: Container(
+          margin: MediaQuery.of(context).viewPadding,
+          padding: EdgeInsets.symmetric(vertical: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TopBar(auth: _auth),
+              WeekView(),
+              TaskBody(),
+            ],
+          ),
+        ),
+      );
+    });
   }
 }

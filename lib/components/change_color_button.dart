@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:toddyapp/global/blocs/theme_bloc/theme_bloc.dart';
 import 'package:toddyapp/global/theme/app_themes.dart';
-import 'package:toddyapp/global/theme/bloc/theme_bloc.dart';
 import 'package:toddyapp/services/get_initial_theme.dart';
 
 class ChangeColorButton extends StatefulWidget {
@@ -15,6 +15,9 @@ class ChangeColorButton extends StatefulWidget {
 }
 
 class _ChangeColorButtonState extends State<ChangeColorButton> {
+  
+  
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,8 +35,24 @@ class _ChangeColorButtonState extends State<ChangeColorButton> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Icon(Icons.color_lens,
-                  color: Theme.of(context).colorScheme.primary),
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    ThemeMode currentThemeMode = getThemeMode(GetInitialTheme().getThemeMode());
+                    (currentThemeMode == ThemeMode.dark)
+                        ? context
+                            .read<ThemeBloc>()
+                            .add(ThemeModeChanged(themeM: ThemeMode.light))
+                        : context
+                            .read<ThemeBloc>()
+                            .add(ThemeModeChanged(themeM: ThemeMode.dark));
+                    
+                  });
+                },
+                icon: Icon(
+                    (Theme.of(context).brightness == Brightness.dark) ? Icons.dark_mode : Icons.light_mode,
+                    color: Theme.of(context).colorScheme.primary),
+              ),
               Row(
                 children: [
                   IconButton(

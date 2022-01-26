@@ -3,9 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:toddyapp/components/task_tile.dart';
-import 'package:toddyapp/models/task_data.dart';
+import 'package:toddyapp/global/blocs/task_day_bloc/bloc/selected_day_bloc.dart';
 
 class TaskBody extends StatefulWidget {
   @override
@@ -21,7 +22,6 @@ class _TaskBodyState extends State<TaskBody> {
   @override
   void initState() {
     super.initState();
-    print(loggedUser!.email);
   }
 
   @override
@@ -45,7 +45,7 @@ class _TaskBodyState extends State<TaskBody> {
                     // ignore: unused_local_variable
                     var docId = streamSnapshot.data!.docs[index].id;
                     if (streamSnapshot.data!.docs[index]['taskDate'] ==
-                        Provider.of<TaskData>(context).dayToShow) {
+                        DateFormat.yMd().format(context.watch<SelectedDayBloc>().state)) {
                       return GestureDetector(
                         onTap: () {
                           print(streamSnapshot.data!.docs[index]['isDone']);

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:toddyapp/services/firebase_auth.dart';
 
 class SingInButton extends StatelessWidget {
   const SingInButton({
@@ -19,14 +20,38 @@ class SingInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () async {
-        HapticFeedback.lightImpact();
+        await HapticFeedback.lightImpact();
 
-        try {
+        AuthenticationService(_auth).singIn(
+            email: emailController.text,
+            password: passwordController.text,
+            context: context);
+        Navigator.of(context).pushNamed('/');
+      },
+      child: Container(
+          width: 80,
+          height: 40,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: Theme.of(context).colorScheme.primary),
+          child: Center(
+            child: Text(
+              'LOGIN',
+              style: TextStyle(color: Theme.of(context).backgroundColor),
+            ),
+          )),
+    );
+  }
+}
+
+
+/*
+ try {
           // ignore: unused_local_variable
           final user = await _auth.signInWithEmailAndPassword(
               email: emailController.text, password: passwordController.text);
 
-          Navigator.pushNamed(context, '/');
+          
         } on FirebaseException catch (e) {
           if (e.code == 'user-not-found') {
             showDialog(
@@ -68,19 +93,4 @@ class SingInButton extends StatelessWidget {
                 });
           }
         }
-      },
-      child: Container(
-          width: 80,
-          height: 40,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: Theme.of(context).colorScheme.primary),
-          child: Center(
-            child: Text(
-              'LOGIN',
-              style: TextStyle(color: Theme.of(context).backgroundColor),
-            ),
-          )),
-    );
-  }
-}
+        */

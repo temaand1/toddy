@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:toddyapp/services/firebase_auth.dart';
 
 class RegisterButton extends StatelessWidget {
   const RegisterButton({
@@ -19,74 +20,13 @@ class RegisterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () async {
-        HapticFeedback.lightImpact();
+        await HapticFeedback.lightImpact();
 
-        try {
-          // ignore: unused_local_variable
-          final user = await _auth.createUserWithEmailAndPassword(
-              email: emailController.text, password: passwordController.text);
-
-          Navigator.pushNamed(context, '/');
-        } on FirebaseException catch (e) {
-          if (e.code == 'invalid-email') {
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                    title: Text("Error"),
-                    content: Text('Please enter correct email adress'),
-                    actions: [
-                      TextButton(
-                        child: Text("Ok"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      )
-                    ],
-                  );
-                });
-          } else if (e.code == 'weak-password') {
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                    title: Text("Error"),
-                    content: Text('The password is too weak'),
-                    actions: [
-                      TextButton(
-                        child: Text("Ok"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      )
-                    ],
-                  );
-                });
-          } else if (e.code == 'email-already-in-use') {
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                    title: Text("Error"),
-                    content: Text('Email already in use'),
-                    actions: [
-                      TextButton(
-                        child: Text("Ok"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      )
-                    ],
-                  );
-                });
-          }
-        }
+        AuthenticationService(_auth).singUp(
+            email: emailController.text,
+            password: passwordController.text,
+            context: context);
+        Navigator.of(context).pushNamed('/');
       },
       child: Container(
           width: 80,

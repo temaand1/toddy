@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:toddyapp/components/change_color_button.dart';
-import 'package:toddyapp/models/google_auth.dart';
+import 'package:toddyapp/services/google_auth.dart';
 
 import 'big_button.dart';
 
