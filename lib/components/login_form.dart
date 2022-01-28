@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +26,7 @@ class LoginForm extends StatelessWidget {
           Padding(
               padding: EdgeInsets.only(bottom: 16),
               child: TextFormField(
+                style: TextStyle(color: Colors.white),
                 validator: (value) => value!.isEmpty || value.contains('@')
                     ? 'Email cannot be blank'
                     : null,
@@ -35,19 +35,23 @@ class LoginForm extends StatelessWidget {
                 decoration: InputDecoration(
                     focusColor: Theme.of(context).colorScheme.primary,
                     border: OutlineInputBorder(),
+                    labelStyle: TextStyle(color: Colors.white),
                     labelText: 'Email'),
               )),
           Padding(
               padding: EdgeInsets.only(bottom: 16),
               child: TextFormField(
+                style: TextStyle(color: Colors.white),
                 validator: (value) => value!.isEmpty || value.length < 6
                     ? 'Minimum 6 symbols'
                     : null,
                 controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                    fillColor: Theme.of(context).backgroundColor,
                     hintText: 'Minimum 6 symbols',
                     border: OutlineInputBorder(),
+                    labelStyle: TextStyle(color: Colors.white),
                     labelText: 'Password'),
               )),
           Row(

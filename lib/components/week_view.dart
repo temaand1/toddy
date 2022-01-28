@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:toddyapp/models/task_data.dart';
+import 'package:toddyapp/global/blocs/task_day_bloc/bloc/selected_day_bloc.dart';
 
 class WeekView extends StatefulWidget {
   @override
@@ -9,10 +9,11 @@ class WeekView extends StatefulWidget {
 }
 
 class WeekViewState extends State<WeekView> {
-  late String selectDate, selectDay;
-  int selected = DateTime.now().day;
+  // late String selectDate, selectDay;
   @override
   Widget build(BuildContext context) {
+    int selected = context.watch<SelectedDayBloc>().state.day;
+
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Container(
@@ -86,20 +87,9 @@ class WeekViewState extends State<WeekView> {
                                   )
                                 ]))),
                     onTap: () {
-                      setState(() {
-                        Provider.of<TaskData>(context, listen: false)
-                            .currentDayUpdate(position);
-                        print(Provider.of<TaskData>(context, listen: false)
-                            .dayToShow);
-                        selectDate = DateTime.now()
-                            .add(Duration(days: position))
-                            .day
-                            .toString();
-                        selectDay = DateFormat('EE').format(
-                            DateTime.now().add(Duration(days: position)));
-                        selected = DateTime.now().day + position;
-                        print('Tag' + selected.toString());
-                      });
+                      setState(() => context
+                          .read<SelectedDayBloc>()
+                          .add(SelectedDayWithDuration(position)));
                     });
               })),
     );

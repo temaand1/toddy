@@ -9,3 +9,9 @@ class ThemeChanged extends ThemeEvent {
 
   ThemeChanged({required this.theme}) : super();
 }
+
+class ThemeModeChanged extends ThemeEvent {
+  final ThemeMode themeM;
+
+  ThemeModeChanged({required this.themeM}) : super();
+}

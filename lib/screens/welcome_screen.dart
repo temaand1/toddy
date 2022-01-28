@@ -14,59 +14,58 @@ class WelcomeScreen extends StatelessWidget {
     if (currentUser != null) {
       return TasksScreen();
     }
-    return SafeArea(
-        child: Container(
+    return Container(
       color: Theme.of(context).colorScheme.primary,
       child: Stack(
-        alignment: AlignmentDirectional.topCenter,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.black,
-                border: Border.all(
-                    width: 0,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withOpacity(0.7))),
-            height: MediaQuery.of(context).size.height * 0.3,
-          ),
-          Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Theme.of(context).colorScheme.primary.withOpacity(0.7),
-                  Theme.of(context).colorScheme.primary,
-                ], begin: Alignment.topRight, end: Alignment.bottomLeft),
-                border: Border.all(
-                  width: 0,
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
-                ),
-                borderRadius:
-                    BorderRadius.only(bottomRight: Radius.circular(75))),
-            height: MediaQuery.of(context).size.height * 0.3,
-          ),
-          Container(
-              margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.2,
-                  left: MediaQuery.of(context).size.width * 0.7),
-              child: getIcon(context, size: 60.0)),
-          Container(
-            child: SingInAndSingUpButtons(),
-            margin:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
-            decoration: BoxDecoration(
-                border: Border.all(
-                  width: 0,
-                ),
-                color: Colors.black,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(75))),
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.7,
-          )
-        ],
+    alignment: AlignmentDirectional.topCenter,
+    children: [
+      Container(
+        decoration: BoxDecoration(
+            color: Colors.black,
+            border: Border.all(
+                width: 0,
+                color: Theme.of(context)
+                    .colorScheme
+                    .primary
+                    .withOpacity(0.7))),
+        height: MediaQuery.of(context).size.height * 0.3,
       ),
-    ));
+      Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Theme.of(context).colorScheme.primary.withOpacity(0.7),
+              Theme.of(context).colorScheme.primary,
+            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+            border: Border.all(
+              width: 0,
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+            ),
+            borderRadius:
+                BorderRadius.only(bottomRight: Radius.circular(75))),
+        height: MediaQuery.of(context).size.height * 0.3,
+      ),
+      Container(
+          margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.2,
+              left: MediaQuery.of(context).size.width * 0.7),
+          child: getIcon(context, size: 60.0)),
+      Container(
+        child: SingInAndSingUpButtons(),
+        margin:
+            EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
+        decoration: BoxDecoration(
+            border: Border.all(
+              width: 0,
+            ),
+            color: Colors.black,
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(75))),
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height * 0.7,
+      )
+    ],
+      ),
+    );
   }
 }
 

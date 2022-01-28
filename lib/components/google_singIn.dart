@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:toddyapp/models/google_auth.dart';
+import 'package:toddyapp/services/google_auth.dart';
 
 class GoogleSingInButton extends StatelessWidget {
   const GoogleSingInButton({
@@ -12,7 +12,7 @@ class GoogleSingInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () async {
-                                HapticFeedback.lightImpact();
+        HapticFeedback.lightImpact();
 
         try {
           // ignore: unused_local_variable
@@ -27,7 +27,8 @@ class GoogleSingInButton extends StatelessWidget {
           width: 250,
           height: 50,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25), color: Theme.of(context).backgroundColor),
+              borderRadius: BorderRadius.circular(25),
+              color: Theme.of(context).backgroundColor),
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

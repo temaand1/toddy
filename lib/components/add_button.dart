@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:toddyapp/global/blocs/task_day_bloc/bloc/selected_day_bloc.dart';
 
 import '../constants.dart';
 import 'custom_iconpack.dart';
@@ -25,7 +27,6 @@ class _AddButtonState extends State<AddButton> {
   @override
   void initState() {
     super.initState();
-    print(loggedUser);
   }
 
   _pickIcon() async {
@@ -65,16 +66,16 @@ class _AddButtonState extends State<AddButton> {
 
   @override
   Widget build(BuildContext context) {
-    String newTaskTitle = "";
-    String taskDay = DateFormat.yMd().format(DateTime.now());
-    DateTime selectedDate = DateTime.now();
+    
+    
+    
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton(
         backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () {
-          addTaskDialog(context, newTaskTitle, taskDay, selectedDate);
+          addTaskDialog(context);
           HapticFeedback.mediumImpact();
         },
         child: Icon(Icons.add),
@@ -82,13 +83,17 @@ class _AddButtonState extends State<AddButton> {
     );
   }
 
-  Future<dynamic> addTaskDialog(BuildContext context, String newTaskTitle,
-      String taskDay, DateTime selectedDate) {
+  Future<dynamic> addTaskDialog(BuildContext context, 
+       ) {
+         String newTaskTitle = "New Task :)";
+         String? addTaskDay;
+        //  String taskDay = DateFormat.yMd().format(context.read<SelectedDayBloc>().state);
     return showModalBottomSheet(
         isScrollControlled: true,
         context: context,
         builder: (context) {
-          return SingleChildScrollView(
+        return SingleChildScrollView(
+              
             child: Container(
               padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -102,7 +107,7 @@ class _AddButtonState extends State<AddButton> {
                         topRight: Radius.circular(30)),
                     color: Theme.of(context).backgroundColor),
                 child: Padding(
-                  padding: kMainPadding,
+                  padding: kMainPadding * 0.7,
                   child: Column(
                     children: [
                       Padding(
@@ -131,11 +136,14 @@ class _AddButtonState extends State<AddButton> {
                           ),
                           mode: DateTimeFieldPickerMode.date,
                           onDateSelected: (DateTime value) {
-                            taskDay = DateFormat.yMd().format(value);
-                            selectedDate = value;
+                            setState(() {
+                              addTaskDay = DateFormat.yMd().format(value);
+                              context.read<SelectedDayBloc>().add(SelectedDayChanded(day: value));
+                            });
+                            
                           },
-                          selectedDate: selectedDate,
-                        ),
+                          selectedDate: context.watch<SelectedDayBloc>().state,
+                          ),
                       ),
                       Container(
                         margin: EdgeInsets.only(bottom: 15),
@@ -159,15 +167,14 @@ class _AddButtonState extends State<AddButton> {
                                       .set({
                                         'userEmail': loggedUser,
                                         'taskName': newTaskTitle,
-                                        'taskDate': taskDay,
+                                        'taskDate': addTaskDay ?? DateFormat.yMd().format(context.read<SelectedDayBloc>().state),
                                         'isDone': taskInit,
                                         'icon': selectedIcon
                                       })
-                                      .then((value) =>
-                                          print('Task Add on $taskDay'))
+                                      
                                       .catchError((error) => (error));
                                 });
-                                Navigator.pushNamed(context, '/');
+                                Navigator.pop(context);
                               },
                             )
                           ],
@@ -179,6 +186,8 @@ class _AddButtonState extends State<AddButton> {
               ),
             ),
           );
+          
+          
         });
   }
 }
@@ -194,7 +203,7 @@ class ChooseIconButton extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
           height: 50,
-          width: 150,
+          width: MediaQuery.of(context).size.width * 0.4,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25), color: Theme.of(context).colorScheme.primary),
           child: Row(
@@ -225,7 +234,7 @@ class AddTaskButton extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
           height: 50,
-          width: 150,
+          width: MediaQuery.of(context).size.width * 0.4,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25), color: Theme.of(context).colorScheme.primary),
           child: Row(
