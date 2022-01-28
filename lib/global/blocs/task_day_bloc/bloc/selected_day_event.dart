@@ -14,3 +14,14 @@ class SelectedDayWithDuration extends SelectedDayEvent {
 
   SelectedDayWithDuration(this.duration);
 }
+
+class SelectedDayAdd extends SelectedDayEvent {
+  final int duration;
+  SelectedDayAdd(this.duration);
+}
+
+class SelectedDaySubstract extends SelectedDayEvent {
+  final int duration;
+  
+  SelectedDaySubstract(this.duration);
+}

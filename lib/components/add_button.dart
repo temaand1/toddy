@@ -86,7 +86,8 @@ class _AddButtonState extends State<AddButton> {
   Future<dynamic> addTaskDialog(BuildContext context, 
        ) {
          String newTaskTitle = "New Task :)";
-         String taskDay = DateFormat.yMd().format(context.read<SelectedDayBloc>().state);
+         String? addTaskDay;
+        //  String taskDay = DateFormat.yMd().format(context.read<SelectedDayBloc>().state);
     return showModalBottomSheet(
         isScrollControlled: true,
         context: context,
@@ -134,16 +135,15 @@ class _AddButtonState extends State<AddButton> {
                             suffixIcon: Icon(Icons.event_note),
                           ),
                           mode: DateTimeFieldPickerMode.date,
-                          onDateSelected: (DateTime value) =>
-                            context.read<SelectedDayBloc>().add(SelectedDayChanded(day: value)),
-                          
+                          onDateSelected: (DateTime value) {
+                            setState(() {
+                              addTaskDay = DateFormat.yMd().format(value);
+                              context.read<SelectedDayBloc>().add(SelectedDayChanded(day: value));
+                            });
                             
-                          
-                    
-                          
-                          
+                          },
                           selectedDate: context.watch<SelectedDayBloc>().state,
-                        ),
+                          ),
                       ),
                       Container(
                         margin: EdgeInsets.only(bottom: 15),
@@ -167,7 +167,7 @@ class _AddButtonState extends State<AddButton> {
                                       .set({
                                         'userEmail': loggedUser,
                                         'taskName': newTaskTitle,
-                                        'taskDate': taskDay,
+                                        'taskDate': addTaskDay ?? DateFormat.yMd().format(context.read<SelectedDayBloc>().state),
                                         'isDone': taskInit,
                                         'icon': selectedIcon
                                       })
